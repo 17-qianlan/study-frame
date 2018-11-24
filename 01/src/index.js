@@ -1,6 +1,6 @@
 import Vue from "vue"
-import "./base.css"
 import App from "./app.vue"
+import "./base.css"
 
 
 const root = document.createElement("div");
