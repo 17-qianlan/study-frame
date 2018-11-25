@@ -1,6 +1,5 @@
 <template>
     <div class="first" v-show="fShow">
-        {{text}}
         {{fIndex}}
     </div>
 </template>
@@ -13,29 +12,24 @@
                 default: false
             },
             fIndex: {
-                type : Number,
-                default: Infinity
-            }
-        },
-        data() {
-            return {
-                text: " I'm first"
-            }
-        },
-        watch :{
-            fShow(val){
-                this.fShow = val;
+                type : String,
+                default: ""
             }
         }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    $h : 300px;
     .first {
         position: absolute;
-        left: 20px;
-        width: 100px;
-        height: 30px;
+        top: 100px;
+        left: 100px;
+        width: 400px;
+        height: $h;
         border: 1px solid blue;
+        font-size: 50px;
+        text-align: center;
+        line-height: $h;
     }
 </style>

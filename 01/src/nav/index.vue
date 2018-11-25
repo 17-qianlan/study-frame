@@ -1,9 +1,9 @@
 <template>
     <nav>
         <ul class="fix">
-            <li class="fl" v-for="(item,index) of list" @mouseenter="enter(item,index)" @mouseleave="out" @key="index">
-                <a href="">{{item}}</a>
-                <First :f-show="show" :f-index="index"></First>
+            <li class="fl" v-for="(item,index) of list" @mouseenter="enter(item,index)" @mouseleave="out(item)" @key="index">
+                <a href="">{{item.key}}</a>
+                <First :f-show="item.show" :f-index="text"></First>
             </li>
             <!--<li class="fl">
                 <a href="">11</a>
@@ -39,17 +39,48 @@
         },
         data(){
             return {
-                show: false,
-                list: [11,22,33,44,55,66,77]
+                text: "I'm ",
+                list: [
+                    {
+                        key : 11,
+                        show : false
+                    },
+                    {
+                        key : 22,
+                        show : false
+                    },
+                    {
+                        key : 33,
+                        show : false
+                    },
+                    {
+                        key : 44,
+                        show : false
+                    },
+                    {
+                        key : 55,
+                        show : false
+                    },
+                    {
+                        key : 66,
+                        show : false
+                    },
+                    {
+                        key : 77,
+                        show : false
+                    }
+                ],
+                num : ["First","Second","third","forth","fifth","sixth","seventh","eighth","ninth","tenth"]
             }
         },
         methods: {
             enter(item,i){
-                this.show = true;
-                console.log(item, i);
+                item.show = true;
+                this.text += this.num[i];
             },
-            out(){
-                this.show = false;
+            out(item){
+                item.show = false;
+                this.text = "I'm ";
             }
         }
     }
