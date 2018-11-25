@@ -1,17 +1,21 @@
 <template>
-    <div id="app">{{text}}</div>
+    <div id="app">
+        <Index></Index>
+    </div>
 </template>
 <script>
+    import Index from "./nav/index.vue"
     export default {
-        data(){
-            return {
-                text: "22222222"
-            }
+        components: {
+            Index
         }
     }
 </script>
 <style scoped>
-    #app{
-        color: #ff9ece;
+    #app {
+        width: 600px;
+        height: 500px;
+        margin: 20px auto;
+        border: 1px solid red;
     }
 </style>
