@@ -1,0 +1,21 @@
+{
+  "name": "00",
+  "version": "1.0.0",
+  "dependencies": {
+    "axios": "latest",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "latest",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "vue": "^2.5.17",
+    "vue-loader": "^15.4.2",
+    "vue-router": "latest",
+    "vuex": "latest",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-html-plugin": "^0.1.1"
+  }
+}
