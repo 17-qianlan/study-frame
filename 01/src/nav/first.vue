@@ -1,6 +1,6 @@
 <template>
     <div class="first" v-show="fShow">
-        {{fIndex}}
+        {{fText}}
     </div>
 </template>
 
@@ -11,7 +11,7 @@
                 type : Boolean,
                 default: false
             },
-            fIndex: {
+            fText: {
                 type : String,
                 default: ""
             }

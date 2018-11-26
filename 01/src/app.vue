@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Index></Index>
+        <Index :list="arr"></Index>
     </div>
 </template>
 <script>
@@ -8,6 +8,40 @@
     export default {
         components: {
             Index
+        },
+        data(){
+            return {
+                arr: [
+                    {
+                        key : 11,
+                        show : false
+                    },
+                    {
+                        key : 22,
+                        show : false
+                    },
+                    {
+                        key : 33,
+                        show : false
+                    },
+                    {
+                        key : 44,
+                        show : false
+                    },
+                    {
+                        key : 55,
+                        show : false
+                    },
+                    {
+                        key : 66,
+                        show : false
+                    },
+                    {
+                        key : 77,
+                        show : false
+                    }
+                ]
+            }
         }
     }
 </script>

@@ -1,28 +1,22 @@
 const path = require("path");
+
+const {VueLoaderPlugin} = require("vue-loader");
 const HTMLPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
-const {VueLoaderPlugin} = require('vue-loader');
-
-
 const isDev = process.env.NODE_ENV === "development";
 
-
 const config = {
-    mode: 'development',
-    entry: path.join(__dirname,"src/index.js"),
+    mode: "development",
+    target: "web",
+    entry: path.join(__dirname, "src/index.js"),
     output: {
         filename: "bundle.js",
-        path: path.join(__dirname,"dist")
+        path: path.join(__dirname, "dist")
     },
     plugins: [
         new VueLoaderPlugin(),
         new HTMLPlugin(),
-        new webpack.DefinePlugin({
-            "process.env": {
-                NODE_ENV : isDev ? '"development"' : '"production"'
-            }
-        })
     ],
     module: {
         rules: [
@@ -32,45 +26,39 @@ const config = {
             },
             {
                 test: /\.css$/,
-                use: ["vue-style-loader","css-loader",]
+                use: ["vue-style-loader", "style-loader", "css-loader"]
             },
             {
-                test: /\.(gif|jpg|jpeg|png|svg)$/,
+                test: /\.(jpg|jpeg|gif|svg|png)$/,
                 use: [
                     {
                         loader: "url-loader",
                         options: {
-                            limit : 1024,
+                            limit: 1024,
                             name: "[name].[ext]"
                         }
                     }
                 ]
-            },
-            {
-                test: /\.scss$/,
-                use: ["vue-style-loader","css-loader","sass-loader"]
             }
         ]
     }
-};
+}
 
-if( isDev ) {
+if (isDev) {
     config.devServer = {
-        port : "8000",
-        host : "localhost",
-        open : true,
+        port: 8080,
+        host: "localhost",
         overlay: {
             errors: true
         },
-        hot : true,
-        hotOnly : true
+        open: true,
+        hot: true,
+        hotOnly: true
     };
     config.plugins.push(
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     )
-}else{
-
 }
 
 module.exports = config;
