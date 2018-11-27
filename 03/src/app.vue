@@ -7,7 +7,7 @@
         name: "app",
         data(){
             return {
-                msg: "1111111"
+                msg: "2222222"
             }
         }
     }
