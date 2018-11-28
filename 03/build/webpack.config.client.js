@@ -1,6 +1,6 @@
 const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
-const ExtractPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtract = require('mini-css-extract-plugin')
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const baseConfig = require("./webpack.config.base.js");
@@ -33,6 +33,39 @@ if (isDev) {
         ])
     })
 }else{
-
+    config = merge(baseConfig,{
+        entry: {
+            app: path.join(__dirname,"../src/index.js")
+        },
+        output: {
+            filename: "[name].[chunkhash:8].js"
+        },
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        chunks: "initial",//默认async
+                        name: "commons",
+                        minSize: 0,//最小尺寸 默认0
+                        minChunks: 2,//最小chunk 默认1
+                        maxInitialRequests: 5//最大初始话请求数
+                    },
+                    vendor: {
+                        test: /node_modules/,
+                        chunks: "initial",
+                        name: "vendor",
+                        priority: 10,
+                        enforce: true
+                    }
+                }
+            },
+            runtimeChunk: true
+        },
+        plugins: defaultPlugins.concat([
+            new MiniCssExtract({
+                filename: "[name].[contenthash:8].css"
+            })
+        ])
+    })
 }
-module.exports = config || baseConfig;
+module.exports = config;
