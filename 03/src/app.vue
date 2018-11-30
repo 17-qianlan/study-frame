@@ -1,5 +1,5 @@
 <template>
-    <div id="app">{{msg}}</div>
+    <div id="app"></div>
 </template>
 
 <script>
@@ -16,10 +16,6 @@
 <style lang="scss" scoped>
     $h : 100px;
     #app{
-        width: 1376px;
-        height: 774px;
-        background: url("./images/666.png") no-repeat center/cover;
-        color: red;
-        line-height: $h;
+
     }
 </style>
