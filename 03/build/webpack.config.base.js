@@ -23,6 +23,11 @@ const config = {
                 use: ["vue-style-loader", "style-loader", "css-loader"]
             },
             {
+                test: /\.js$/,
+                loader: "babel-loader",
+                exclude: /node_modules/
+            },
+            {
                 test: /\.(jpg|jpeg|gif|svg|png)$/,
                 use: [
                     {
@@ -36,7 +41,7 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                use: ["vue-style-loader","css-loader","sass-loader"]
+                use: ["vue-style-loader", "css-loader", "sass-loader"]
             }
         ]
     },

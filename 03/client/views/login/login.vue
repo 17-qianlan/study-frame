@@ -1,5 +1,8 @@
 <template>
-    <div>我是login</div>
+    <div>
+        <span>我是login</span>
+        <a href="/user">走,去登陆</a>
+    </div>
 </template>
 
 <script>

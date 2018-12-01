@@ -13,6 +13,7 @@ const devServer = {
     overlay: {
         errors: true
     },
+    historyApiFallback: true,
     open: true,
     hotOnly: true
 };
