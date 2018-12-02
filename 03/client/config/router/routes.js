@@ -11,11 +11,11 @@ export default [
         component: Index
     },
     {
-        path: "/res",
+        path: "/login",
         component: Res
     },
     {
-        path: "/login",
+        path: "/res",
         component: Login
     },
     {

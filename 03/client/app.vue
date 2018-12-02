@@ -21,8 +21,9 @@
 </script>
 
 <style lang="scss" scoped>
-    $h : 100px;
+    $h : 1000px;
     #app{
-
+        position: relative;
+        height: $h;
     }
 </style>

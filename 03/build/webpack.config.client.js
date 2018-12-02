@@ -13,7 +13,9 @@ const devServer = {
     overlay: {
         errors: true
     },
-    historyApiFallback: true,
+    historyApiFallback: {
+        index: "/index.html"
+    },
     open: true,
     hotOnly: true
 };
@@ -41,7 +43,7 @@ if (isDev) {
             app: path.join(__dirname,"../client/index.js")
         },
         output: {
-            filename: "[name].[chunkhash:8].js"
+            filename: "[name].js"
         },
         optimization: {
             splitChunks: {

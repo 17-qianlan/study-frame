@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 const router = createRouter();
 
 new Vue({
-    router,
+    el : "#app",
+    router: router,
     render : (h) => h(App)
-}).$mount("#app");
+});

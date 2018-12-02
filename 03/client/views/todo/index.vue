@@ -1,8 +1,8 @@
 <template>
     <div class="routing">
-        <a href="/login">登录</a>
-        <a href="/app">主页</a>
-        <a href="/res">注册</a>
+        <router-link to="/login">登录</router-link>
+        <router-link to="/app">主页</router-link>
+        <router-link to="/res">注册</router-link>
     </div>
 </template>
 
@@ -13,8 +13,15 @@
 </script>
 
 <style scoped>
-    .routing a{
+    .routing .active{
         display: block;
         font-size: 30px;
+    }
+    .routing .exact{
+        color: green;
+    }
+    .routing{
+        position: absolute;
+        bottom: 0;
     }
 </style>
