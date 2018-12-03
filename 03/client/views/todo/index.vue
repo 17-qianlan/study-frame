@@ -20,8 +20,4 @@
     .routing .exact{
         color: green;
     }
-    .routing{
-        position: absolute;
-        bottom: 0;
-    }
 </style>
