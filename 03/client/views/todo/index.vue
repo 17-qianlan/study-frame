@@ -13,7 +13,7 @@
 </script>
 
 <style scoped>
-    .routing .active{
+    .routing a{
         display: block;
         font-size: 30px;
     }
