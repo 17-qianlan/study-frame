@@ -6,7 +6,9 @@
         <div v-show="isShow">
             <button @click="clickStop" :disabled="boo">点击我停止定时器</button>
             <button @click="clickStart" :disabled="!boo">点击我开始定时器</button>
+            <button @click="rest">重置定时器</button>
         </div>
+        <p v-text="text"  style="color: red"></p>
         <p>{{arr}}</p>
         <router-view />
     </div>
@@ -37,11 +39,21 @@
                 this.isShow = true;
             }).catch(err => {
                 console.log(err);
-            })
+            });
+            /*this.$store.commit("a/updateText",999);
+            this.$store.getters.textPlus;
+            this.$store.dispatch("a/add");
+            console.log(this.$store.state.c.text);*/
+            /*console.log(this.$store.state.a.text);
+            console.log(this.$store.state.b.text);*/
         },
         computed: {
             count(){
                 return this.$store.state.count
+            },
+            text(){
+                return 888
+                // return this.$store.state.a.text
             }
             // ...mapState(["count"])
         },
@@ -58,6 +70,11 @@
                 this.timer = setInterval(() => {
                     this.$store.commit("updateCount",++this.i);
                 },1000/60)
+            },
+            rest(){
+                clearInterval(this.timer);
+                this.boo = true;
+                this.$store.commit("updateCount",0);
             }
         }
     }

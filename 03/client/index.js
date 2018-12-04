@@ -11,6 +11,12 @@ Vue.use(Vuex);
 const router = createRouter();
 const store = createStore();
 
+store.registerModule("c",{
+    state: {
+        text: 3
+    }
+})
+
 /*
 router.beforeEach((to,from,next) => {
     //to && from : name fullPath hash matched meta params query path
