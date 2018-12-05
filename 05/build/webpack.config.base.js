@@ -4,7 +4,7 @@ const config = {
     mode: "development",
     target: "web",
     entry: path.join(__dirname,"../client/index.js"),
-    output:{
+    output: {
         filename: "bundle.js",
         path: path.join(__dirname,"../dist")
     },
@@ -19,7 +19,11 @@ const config = {
                 use: ["vue-style-loader","css-loader"]
             },
             {
-                test: /\.(jpg|jpeg|svg|png|gif)$/,
+                test: /\.scss$/,
+                use: ["vue-style-loader","css-loader","sass-loader"]
+            },
+            {
+                test: /\.(gif|svg|png|jpeg|jpg)$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -30,13 +34,10 @@ const config = {
                     }
 
                 ]
-            },
-            {
-                test: /\.scss$/,
-                use: ["vue-style-loader","css-loader","sass-loader"]
             }
         ]
     }
 }
+
 
 module.exports = config;
