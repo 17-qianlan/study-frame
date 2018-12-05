@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["env",{
+      "modules": false,
+      "target": ["> 1%","latest 2 versions", "not id <= 8"]
+    }],
+    "stage-0"
+  ],
+  "plugins": ["transform-vue-jsx","transform-runtime"],
+  "comments": false,
+  "env": {
+    "presets": ["env","stage-0"],
+    "plugins": ["transform-vue-jsx"]
+  }
+}

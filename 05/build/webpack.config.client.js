@@ -37,7 +37,8 @@ if( isDev ){
         plugins: defaultPlugins.concat([
             new webpack.HotModuleReplacementPlugin()
         ])
-    })
+    });
+    config.devtool = "#cheap-module-eval-source-map";
 }else{
     config = merge(baseConfig,{
         entry: {

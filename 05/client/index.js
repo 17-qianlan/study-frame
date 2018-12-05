@@ -7,3 +7,4 @@ document.body.appendChild(app);
 new Vue({
     render: (h) => h(App)
 }).$mount(app);
+

@@ -9,6 +9,9 @@
             return {
                 msg: "777777"
             }
+        },
+        mounted(){
+            console.log("888");
         }
     }
 </script>
