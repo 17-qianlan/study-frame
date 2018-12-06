@@ -1,10 +1,9 @@
-import Vue from "vue"
-import App from "./app.vue"
+import Vue from 'vue'
+import App from './app.vue'
 
-const app = document.createElement("div");
-document.body.appendChild(app);
-
+/* eslint-disable no-new */
 new Vue({
-    render: (h) => h(App)
-}).$mount(app);
-
+  el: '#app',
+  render: (h) => h(App),
+  components: { App }
+})
