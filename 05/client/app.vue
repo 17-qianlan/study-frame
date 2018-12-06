@@ -18,6 +18,8 @@
 
 <style scoped>
     div{
-        color: red;
+        width: 1500px;
+        height: 1000px;
+        background: url("./assets/images/1.jpeg") no-repeat;
     }
 </style>

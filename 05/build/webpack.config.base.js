@@ -31,20 +31,32 @@ const config = {
             },
             {
                 test: /\.css$/,
-                use: ['vue-style-loader','css-loader']
+                use: ['vue-style-loader', 'css-loader']
             },
             {
                 test: /\.scss$/,
-                use: ['vue-style-loader','css-loader','sass-loader']
+                use: ['vue-style-loader', 'css-loader', 'sass-loader']
             },
             {
-                test: /\.(gif|svg|png|jpeg|jpg)$/,
+                test: /\.(gif|svg|png|jpe?g)$/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
                             limit: 1024,
-                            name: '[name].[ext]'
+                            name: 'resources/[path][name].[hash:8].[ext]'
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(mp4|mkv|avi|mwv|3gp|webm|flac|aac|ogg|mp3|wave|mpeg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            limit: 10000,
+                            name: 'resources/[path][name].[hash:8].[ext]'
                         }
                     }
                 ]
