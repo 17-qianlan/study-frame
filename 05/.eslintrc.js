@@ -14,7 +14,11 @@ module.exports = {
         "vue"
     ],
     rules: {
+        "semi": [2, "always"],
         "generator-star-spacing": "off",
+        "indent": "off",
+        "space-before-function-paren": ["error", "never"],
+        "vue/script-indent": ["error", 4,{"baseIndent":1}],
         "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
     }
 }

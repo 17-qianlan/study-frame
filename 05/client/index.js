@@ -1,9 +1,8 @@
-import Vue from 'vue'
-import App from './app.vue'
+import Vue from 'vue';
+import App from './app.vue';
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  render: (h) => h(App),
-  components: { App }
-})
+    el: '#app',
+    render: (h) => h(App)
+});

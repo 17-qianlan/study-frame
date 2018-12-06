@@ -1,53 +1,53 @@
-const path = require("path");
-const {VueLoaderPlugin} = require("vue-loader");
-const createVueLoaderOptions = require("./vue-loader.config");
+const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader');
+const createVueLoaderOptions = require('./vue-loader.config');
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.NODE_ENV === 'development';
 const config = {
-    mode: "development",
-    target: "web",
-    entry: path.join(__dirname, "../client/index.js"),
+    mode: 'development',
+    target: 'web',
+    entry: path.join(__dirname, '../client/index.js'),
     output: {
-        filename: "bundle.js",
-        path: path.join(__dirname, "../dist")
+        filename: 'bundle.js',
+        path: path.join(__dirname, '../dist')
     },
     module: {
         rules: [
             {
                 test: /\.vue$/,
-                loader: "vue-loader",
+                loader: 'vue-loader',
                 options: createVueLoaderOptions(isDev)
             },
             {
                 test: /\.css$/,
-                use: ["vue-style-loader", "style-loader", "css-loader"]
+                use: ['vue-style-loader', 'style-loader', 'css-loader']
             },
             {
                 test: /\.js$/,
-                loader: "babel-loader",
+                loader: 'babel-loader',
                 exclude: /node_modules/
             },
             {
                 test: /\.(jpg|jpeg|gif|svg|png)$/,
                 use: [
                     {
-                        loader: "file-loader",
+                        loader: 'file-loader',
                         options: {
                             limit: 1024,
-                            name: "resources/[path][name].[ext]"
+                            name: 'resources/[path][name].[ext]'
                         }
                     }
                 ]
             },
             {
                 test: /\.scss$/,
-                use: ["vue-style-loader", "css-loader", "sass-loader"]
+                use: ['vue-style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
     plugins: [
         new VueLoaderPlugin()
     ]
-}
+};
 
 module.exports = config;

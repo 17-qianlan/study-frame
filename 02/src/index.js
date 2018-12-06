@@ -1,10 +1,9 @@
-import Vue from "vue"
-import App from "./app.vue"
-import "./css/base.css"
+import Vue from 'vue';
+import App from './app.vue';
+import './css/base.css';
 
-const root = document.createElement("div");
+const root = document.createElement('div');
 document.body.appendChild(root);
-
 
 new Vue({
     render: (h) => h(App)

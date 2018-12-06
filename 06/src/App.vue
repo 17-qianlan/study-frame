@@ -9,12 +9,12 @@
 <script>
     export default {
         name: 'App',
-        data(){
+        data() {
             return {
-                msg: "55555"
-            }
+                msg: '55555'
+            };
         }
-    }
+    };
 </script>
 
 <style>
