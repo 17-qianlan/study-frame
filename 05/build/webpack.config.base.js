@@ -65,6 +65,9 @@ const config = {
                 ]
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.json']
     }
 };
 

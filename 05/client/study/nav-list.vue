@@ -9,7 +9,10 @@
 <script>
     export default {
         name: 'nav-list',
-        props: ['list']
+        props: ['list'],
+        mounted() {
+            console.log(this.$);
+        }
     };
 </script>
 
