@@ -1,25 +1,35 @@
 <template>
-    <div id="app">{{msg}}</div>
+    <div id="app" :style="styles">
+        <Index :list="list"></Index>
+    </div>
 </template>
 
 <script>
+    import Index from './study/index.vue';
     export default {
         name: 'app',
+        components: {
+            Index
+        },
         data() {
             return {
-                msg: '777777'
+                styles: '',
+                list: [11, 22, 33, 44, 55, 66, 77, 88, 99]
             };
         },
         mounted() {
-            console.log('888');
+            this.styles = {
+                width: window.innerWidth.toString() + 'px',
+                height: window.innerHeight.toString() + 'px'
+            };
         }
     };
 </script>
 
-<style scoped>
-    div{
-        width: 1500px;
-        height: 1000px;
-        background: url("./assets/images/1.jpeg") no-repeat;
+<style scoped lang="scss">
+    $w: 1000px;
+    $h: 600px;
+    #app{
+        background: url("../assets/images/51.jpg") no-repeat center/cover;
     }
 </style>

@@ -1,21 +1,21 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
-import Vuex from "vuex"
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 
-import App from "./app.vue"
-import createRouter from "./config/router/router.js"
-import createStore from "./store/store.js"
+import App from './app.vue';
+import createRouter from './config/router/router.js';
+import createStore from './store/store.js';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
 const router = createRouter();
 const store = createStore();
 
-store.registerModule("c",{
+store.registerModule('c', {
     state: {
         text: 3
     }
-})
+});
 
 /*
 router.beforeEach((to,from,next) => {
@@ -31,10 +31,10 @@ router.afterEach((to,from,next) => {
     console.log("我是afterEach");
 })
 */
-
+/* eslint-disable no-new */
 new Vue({
-    el : "#app",
+    el: '#app',
     router,
     store,
-    render : (h) => h(App)
+    render: (h) => h(App)
 });
