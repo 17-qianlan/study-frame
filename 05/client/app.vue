@@ -19,8 +19,8 @@
         },
         mounted() {
             this.styles = {
-                width: window.innerWidth.toString() + 'px',
-                height: window.innerHeight.toString() + 'px'
+                width: '100%',
+                height: '100%'
             };
         }
     };
@@ -31,5 +31,6 @@
     $h: 600px;
     #app{
         background: url("../assets/images/51.jpg") no-repeat center/cover;
+        overflow: hidden;
     }
 </style>

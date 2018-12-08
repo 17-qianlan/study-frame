@@ -15,6 +15,9 @@ const devServer = {
     overlay: {
         errors: true
     },
+    historyApiFallback: {
+       index: '/index.html'
+    },
     open: true,
     hotOnly: true
 };
@@ -38,7 +41,7 @@ if (isDev) {
             new webpack.HotModuleReplacementPlugin()
         ])
     });
-    config.devtool = '#cheap-module-eval-source-map'
+    config.devtool = '#cheap-module-eval-source-map';
 } else {
     config = merge(baseConfig, {
         entry: {

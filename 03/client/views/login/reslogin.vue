@@ -4,8 +4,8 @@
 
 <script>
     export default {
-        name: "reslogin"
-    }
+        name: 'reslogin'
+    };
 </script>
 
 <style scoped>

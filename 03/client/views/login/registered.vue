@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        /*beforeRouteEnter(to,from,next){
+        /* beforeRouteEnter(to,from,next){
             console.log("我是beforeRouteEnter");
             next();
         },
@@ -14,9 +14,9 @@
         },
         beforeRouteLeave(to,from,next){
             console.log("我是beforeRouteLeave");
-        },*/
-        name: "registered"
-    }
+        }, */
+        name: 'registered'
+    };
 </script>
 
 <style scoped>
