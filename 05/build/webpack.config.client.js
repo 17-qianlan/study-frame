@@ -15,6 +15,12 @@ const devServer = {
     overlay: {
         errors: true
     },
+    proxy: {
+        '/r': {
+            target: 'http://localhost:3000/',
+            changeOrigin: true
+        }
+    },
     historyApiFallback: {
        index: '/index.html'
     },
@@ -25,7 +31,9 @@ const devServer = {
 const defaultPlugins = [
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-        'process.env': isDev ? '"development"' : '"productions"'
+        'process.env': {
+            NODE_ENV: isDev ? '"development"' : '"productions"'
+        }
     }),
     new HTMLPlugin({
         template: path.join(__dirname, 'template.html')

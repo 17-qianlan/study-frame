@@ -2,9 +2,10 @@
     <nav>
         <ul class="fix">
             <li v-for="item of list" :key="item" class="fl">
-                <a :href='"nav/"+item'>{{item}}</a>
+                <router-link :to="{ path: '/nav/'+item}">{{item}}</router-link>
             </li>
         </ul>
+        <router-view />
     </nav>
 </template>
 

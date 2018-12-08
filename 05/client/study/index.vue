@@ -1,6 +1,7 @@
 <template>
     <div class="wrap">
         <nav-list :list="list"></nav-list>
+        <router-link to="/router">node</router-link>
         <!--<First></First>-->
     </div>
 </template>

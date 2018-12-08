@@ -30,7 +30,7 @@
     $w: 1000px;
     $h: 600px;
     #app{
-        background: url("../assets/images/51.jpg") no-repeat center/cover;
+        background: url("assets/images/51.jpg") no-repeat center/cover;
         overflow: hidden;
     }
 </style>
