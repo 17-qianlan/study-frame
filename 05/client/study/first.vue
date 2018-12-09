@@ -1,7 +1,7 @@
 <template>
     <div class="first">
         <p>我是组件<span>first</span></p>
-        <router-link></router-link>
+        <!--<router-link />-->
     </div>
 </template>
 

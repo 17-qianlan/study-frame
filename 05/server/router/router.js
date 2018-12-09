@@ -1,6 +1,6 @@
 const KoaRouter = require('koa-router');
 
-const router = KoaRouter();
+const router = new KoaRouter();
 
 router.get('/router', async ctx => {
     console.log('我已经被请求');

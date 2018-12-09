@@ -15,14 +15,14 @@ const devServer = {
     overlay: {
         errors: true
     },
+    historyApiFallback: {
+        index: '/index.html'
+    },
     proxy: {
         '/r': {
             target: 'http://localhost:3000/',
             changeOrigin: true
         }
-    },
-    historyApiFallback: {
-       index: '/index.html'
     },
     open: true,
     hotOnly: true
