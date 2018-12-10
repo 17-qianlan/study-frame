@@ -1,5 +1,5 @@
-const HTMLPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const HTMLPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const path = require('path');
@@ -10,7 +10,7 @@ const baseConfig = require('./webpack.config.base.js');
 const isDev = process.env.NODE_ENV === 'development';
 
 const devServer = {
-    port: 8000,
+    port: '8000',
     host: 'localhost',
     overlay: {
         errors: true
@@ -47,9 +47,9 @@ if (isDev) {
         devServer,
         plugins: defaultPlugins.concat([
             new webpack.HotModuleReplacementPlugin()
-        ])
+        ]),
+        devtool: '#cheap-module-eval-source-map'
     });
-    config.devtool = '#cheap-module-eval-source-map';
 } else {
     config = merge(baseConfig, {
         entry: {

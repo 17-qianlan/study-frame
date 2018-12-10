@@ -1,13 +1,18 @@
+import First from '../client/study/first';
 import Login from '../client/users/login';
 import Res from '../client/users/registered';
 
 export default [
     {
-        path: '/user/login',
+        path: '/nav/11',
+        component: First
+    },
+    {
+        path: '/nav/22',
         component: Login
     },
     {
-        path: '/user/res',
+        path: '/nav/33',
         component: Res
     }
 ];
