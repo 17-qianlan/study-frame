@@ -1,20 +1,16 @@
 <template>
     <div id="app" :style="styles">
-        <Index :list="list"></Index>
+        <nav-list></nav-list>
+        <router-view />
     </div>
 </template>
 
 <script>
-    import Index from './study/index';
     export default {
         name: 'app',
-        components: {
-            Index
-        },
         data() {
             return {
-                styles: '',
-                list: [11, 22, 33, 44, 55, 66, 77, 88, 99]
+                styles: ''
             };
         },
         mounted() {

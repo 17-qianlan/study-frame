@@ -1,8 +1,6 @@
 <template>
     <div class="wrap">
         <nav-list :list="list"></nav-list>
-        <!--<router-link to="/router">node</router-link>-->
-        <!--<First></First>-->
     </div>
 </template>
 
@@ -19,8 +17,23 @@
 </script>
 
 <style scoped lang="scss">
-    nav{
+
+    #app{
         width: 500px;
         margin: 100px auto;
+        ul {
+            li {
+                width: 50px;
+                height: 30px;
+                background: greenyellow;
+                border-radius: 5px;
+                margin-left: 5px;
+                text-align: center;
+                line-height: $l-height;
+                a {
+                    color: black;
+                }
+            }
+        }
     }
 </style>

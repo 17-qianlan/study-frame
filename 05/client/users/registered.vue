@@ -20,10 +20,7 @@
 
 <script>
     export default {
-        name: 'registered',
-        data() {
-
-        }
+        name: 'registered'
     };
 </script>
 
