@@ -1,6 +1,7 @@
 <template>
     <div id="app" :style="styles">
         <nav-list></nav-list>
+        <alert v-show="boo"></alert>
         <router-view />
     </div>
 </template>
@@ -10,7 +11,8 @@
         name: 'app',
         data() {
             return {
-                styles: ''
+                styles: '',
+                boo: false
             };
         },
         mounted() {
@@ -26,6 +28,7 @@
     $w: 1000px;
     $h: 600px;
     #app{
+        position: relative;
         background: url("assets/images/51.jpg") no-repeat center/cover;
         overflow: hidden;
     }

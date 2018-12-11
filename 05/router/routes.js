@@ -1,5 +1,5 @@
-import Login from '../client/users/login';
-import Res from '../client/users/registered';
+import Login from '../client/study/users/login';
+import Res from '../client/study/users/registered';
 
 export default [
     {
