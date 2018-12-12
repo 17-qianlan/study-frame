@@ -1,59 +1,32 @@
 <template>
-    <div class="login">
+    <div class="login" ref="user">
         <h2>登录</h2>
         <ul>
             <li>
                 <span>账号:</span>
-                <input type="text">
+                <input type="text"  ref="user">
             </li>
             <li>
                 <span>密码:</span>
-                <input type="text">
+                <input type="text"  ref="pass">
             </li>
             <li>
-                <input type="button" value="登录">
-                <input type="button" value="重置">
+                <input type="button" value="登录" @click="send">
+                <input type="button" value="重置" @click="cleanVal">
             </li>
         </ul>
+        <alert :mag="mag" :isShow="isShow" @boo="handleShow" v-show="isShow"></alert>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'login',
-        data() {
-            return {
-                aInp: {}
-            };
-        },
-        mounted() {
-            this.aInp = this.$refs;
-        },
-        methods: {
-            cleanVal() {
-                for (const item of Object.values(this.aInp)) {
-                    item.value = '';
-                }
-                this.aInp.user.focus();
-            },
-            send() {
-                let val = '';
-                for (const item of Object.values(this.aInp)) {
-                    if (item.value === '') {
-                        confirm('请输入');
-                        item.focus();
-                        break;
-                    }
-                    val += item.value + '/';
-                }
-                console.log(val);
-            }
-        }
-    };
+    import users from './users';
+    export default users('login');
 </script>
 
 <style scoped lang="scss">
     .login {
+        position: relative;
         width: 500px;
         height: 350px;
         margin: 100px auto;
@@ -94,6 +67,7 @@
                     width: 40%;
                     height: 100%;
                     margin-left: 20px;
+                    cursor: pointer;
                 }
             }
             input{

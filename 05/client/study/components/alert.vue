@@ -1,8 +1,8 @@
 <template>
-    <div class="alert" :style="styles" @click="clickShow">
-        <section class="msg">
+    <div class="alert" :style="styles">
+        <section class="msg" :style="sectionCss">
             <p>请输入账号或密码</p>
-            <input type="button" value="确定" />
+            <input type="button" value="确定" @click="clickShow"/>
         </section>
     </div>
 </template>
@@ -10,15 +10,28 @@
 <script>
     export default {
         name: 'alert',
-        props: ['mag', 'isShow'],
+        props: {
+            isShow: {
+                type: Boolean,
+                default: false
+            },
+            mag: {
+                type: Object,
+                default() {
+                    return {};
+                }
+            }
+        },
         data() {
             return {
-                styles: {}
+                styles: {},
+                boo: this.isShow,
+                sectionCss: {}
             };
         },
         methods: {
             clickShow() {
-                this.isShow = 'false';
+                this.$emit('boo', false);
             }
         },
         watch: {
@@ -30,12 +43,12 @@
                     left: -val.left + 'px',
                     top: -val.top + 'px'
                 };
+                this.sectionCss = {
+                    margin: val.top * 2.5 + 'px auto'
+                };
             },
             styles(val) {
                 this.styles = val;
-            },
-            isShow(val) {
-                this.$emit('isShow', val);
             }
         }
     };
@@ -48,7 +61,6 @@
         .msg {
             width: 200px;
             height: 100px;
-            margin: 200px auto;
             border-radius: 5px;
             background: #c87b98;
             p{

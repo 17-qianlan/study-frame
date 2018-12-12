@@ -33,10 +33,10 @@
         width: 700px;
         height: 30px;
         margin: 10px auto 0;
-        .nav-list {
+        .nav-list{
             width: 500px;
             height: 30px;
-            li {
+            li{
                 width: 50px;
                 height: 30px;
                 background: greenyellow;
