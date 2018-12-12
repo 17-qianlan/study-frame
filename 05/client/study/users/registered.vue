@@ -1,5 +1,5 @@
 <template>
-    <div class="res">
+    <div class="res" ref="res">
         <h2>注册</h2>
         <ul>
             <li>
@@ -19,6 +19,7 @@
                 <input type="button" value="重置" @click="cleanVal">
             </li>
         </ul>
+        <alert :mag="mag" :isShow="isShow" v-show="isShow"></alert>
     </div>
 </template>
 
@@ -27,11 +28,14 @@
         name: 'registered',
         data() {
             return {
-                aInp: {}
+                aInp: {},
+                mag: {},
+                isShow: false
             };
         },
         mounted() {
             this.aInp = this.$refs;
+            this.mag = this.getOffset(this.$refs.res);
         },
         methods: {
             cleanVal() {
@@ -44,13 +48,30 @@
                 let val = '';
                 for (const item of Object.values(this.aInp)) {
                     if (item.value === '') {
-                        confirm('请输入');
+                        this.isShow = true;
                         item.focus();
                         break;
                     }
                     val += item.value + '/';
                 }
                 console.log(val);
+            },
+            getOffset(ele) {
+                let obj = {
+                    left: 0,
+                    top: 0
+                };
+                while (ele !== document.body) {
+                    obj.top += ele.offsetTop + ele.offsetParent.clientTop;
+                    obj.left += ele.offsetLeft + ele.offsetParent.clientLeft;
+                    ele = ele.offsetParent;
+                };
+                return obj;
+            }
+        },
+        watch: {
+            isShow(val) {
+                this.$on('isShow', val);
             }
         }
     };
@@ -58,6 +79,7 @@
 
 <style scoped lang="scss">
     .res {
+        position: relative;
         width: 500px;
         height: 350px;
         margin: 100px auto;
