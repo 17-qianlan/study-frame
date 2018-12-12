@@ -6,7 +6,7 @@ import './assets/css/base.css';
 import App from './app.vue';
 import './assets/js/jQuery.js';
 import NavList from './study/views/nav-list';
-import Alert from './study/views/alert';
+import Alert from './study/components/alert';
 
 import createRouter from '../router/router';
 
