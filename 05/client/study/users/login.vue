@@ -4,7 +4,7 @@
         <ul>
             <!--<li>
                 <span>账号:</span>
-                <input type="text"  ref="user">
+                <input type="text"  ref="control">
             </li>
             <li>
                 <span>密码:</span>

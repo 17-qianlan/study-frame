@@ -3,11 +3,11 @@ import Res from '../client/study/users/registered';
 
 export default [
     {
-        path: '/user/login',
+        path: '/control/login',
         component: Login
     },
     {
-        path: '/user/res',
+        path: '/control/res',
         component: Res
     }
 ];

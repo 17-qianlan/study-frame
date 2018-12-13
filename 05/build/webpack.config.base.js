@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const createVueLoaderOptions = require('./vue-loader.config');
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -35,7 +36,7 @@ const config = {
             },
             {
                 test: /\.css$/,
-                use: ['vue-style-loader', 'style-loader', 'css-loader', 'postcss-loader']
+                use: ['vue-style-loader', 'css-loader']
             },
             {
                 test: /\.scss$/,

@@ -71,7 +71,7 @@ export default (type = 'registered') => {
             /*
             userInput(e) {
                 let val = e.target.value;
-                let reg = tool.pattern.user;
+                let reg = tool.pattern.control;
                 this.userErrMsg = !reg.test(val);
             },
             passwordInput(e) {

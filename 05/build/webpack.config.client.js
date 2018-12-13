@@ -37,6 +37,9 @@ const defaultPlugins = [
     }),
     new HTMLPlugin({
         template: path.join(__dirname, 'template.html')
+    }),
+    new MiniCssExtractPlugin({
+        filename: '[name].[chunkhash:8].css'
     })
 ];
 

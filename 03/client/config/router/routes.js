@@ -29,7 +29,7 @@ export default [
         } */
     },
     {
-        path: '/user',
+        path: '/control',
         component: ResLogin
     }
 ];

@@ -8,7 +8,7 @@
             </li>
             <!--<li>
                 &lt;!&ndash;<span>账号:</span>&ndash;&gt;
-                <input type="user" ref="user" @focus="focusUser" @blur="userInput" placeholder="5-10位纯数字">
+                <input type="control" ref="control" @focus="focusUser" @blur="userInput" placeholder="5-10位纯数字">
                 <p v-if="userErrMsg">账号格式错误;示例: 1122</p>
             </li>
             <li>
