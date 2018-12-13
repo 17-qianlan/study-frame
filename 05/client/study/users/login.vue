@@ -1,14 +1,18 @@
 <template>
-    <div class="login" ref="user">
+    <div class="login" ref="users">
         <h2>登录</h2>
         <ul>
-            <li>
+            <!--<li>
                 <span>账号:</span>
                 <input type="text"  ref="user">
             </li>
             <li>
                 <span>密码:</span>
                 <input type="text"  ref="pass">
+            </li>-->
+            <li v-for="(item,index) of userData" :key="index">
+                <input :type="item.type" :ref="item.ref" @focus="focusUser(item,index)" @blur="verification(item,index)" :placeholder="item.placeholder">
+                <p v-if="item.msgErr">{{item.msg}}</p>
             </li>
             <li>
                 <input type="button" value="登录" @click="send">
@@ -32,37 +36,53 @@
         margin: 100px auto;
         font-size: 20px;
         h2 {
-            width: 70%;
+            width: 95%;
             height: 40px;
             margin: auto;
             text-align: center;
         }
         ul {
-            width: 70%;
+            width: 95%;
             height: 70%;
             margin: 20px auto 0;
             font-size: 20px;
             li:not(:last-of-type) {
                 width: 100%;
-                height: 40px;
+                min-height: 40px;
                 margin: 15px 0 0 5px;
-                span{
+                /*span{
                     display: inline-block;
                     width: 25%;
                     text-align: center;
-                }
-                input{
+                }*/
+                /*input{
                     display: inline-block;
                     width: 68%;
                     height: 25px;
                     line-height: 20px;
                     text-indent: 10px;
+                }*/
+                input{
+                    display: block;
+                    width: 95%;
+                    height: 40px;
+                    line-height: 40px;
+                    text-indent: 10px;
+                }
+                p {
+                    display: block;
+                    width: 100%;
+                    height: 40px;
+                    margin-top: 5px;
+                    color: red;
+                    line-height: 40px;
+                    text-align: left;
                 }
             }
             li:nth-child(3){
                 width: 70%;
                 height: 40px;
-                margin: 10px auto 0;
+                margin: 50px auto 0;
                 input{
                     width: 40%;
                     height: 100%;

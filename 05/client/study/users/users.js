@@ -1,16 +1,49 @@
-export default () => {
+import tool from '../../assets/js/tool.js';
+export default (type = 'registered') => {
     return {
-        name: 'registered',
+        name: type,
         data() {
             return {
                 aInp: {},
                 mag: {},
-                isShow: false
+                isShow: false,
+                userData: [
+                    {
+                        type: 'user',
+                        ref: 'user',
+                        placeholder: '账号: 5-10位纯数字',
+                        msg: '账号格式错误',
+                        span: '账号',
+                        msgErr: false
+                    },
+                    {
+                        type: 'password',
+                        ref: 'password',
+                        placeholder: '6-16位数字或字母符号',
+                        msg: '密码格式错误',
+                        span: '密码',
+                        msgErr: false
+                    },
+                    {
+                        type: 'password',
+                        ref: 'confirmPassword',
+                        placeholder: '请再次输入密码',
+                        msg: '两次密码不一致',
+                        span: '确认密码',
+                        msgErr: false
+                    }
+                ]
+                /*
+                userErrMsg: false,
+                passwordErrMsg: false,
+                confirmErrMsg: false
+                */
             };
         },
         mounted() {
             this.aInp = this.$refs;
-            this.mag = this.getOffset(this.$refs.user);
+            this.mag = this.getOffset(this.$refs.users);
+            if (type === 'login') this.userData = this.userData.splice(0, 2);
         },
         methods: {
             cleanVal() {
@@ -26,6 +59,7 @@ export default () => {
                         this.isShow = true;
                         break;
                     }
+                    this.verification(item);
                     val += item.value + '/';
                 }
                 console.log(val);
@@ -33,6 +67,26 @@ export default () => {
             handleShow(val) {
                 this.isShow = val;
                 this.aInp.user.focus();
+            },
+            /*
+            userInput(e) {
+                let val = e.target.value;
+                let reg = tool.pattern.user;
+                this.userErrMsg = !reg.test(val);
+            },
+            passwordInput(e) {
+                let val = e.target.value;
+                let reg = tool.pattern.password;
+                this.passwordErrMsg = !reg.test(val);
+            },
+            confirmPasswordInput(e) {
+                let valOne = e.target.value;
+                let valTwo = this.aInp.pass.value;
+                this.confirmErrMsg = valOne !== valTwo;
+            },
+            */
+            focusUser(item, index) {
+                item.msgErr = false;
             },
             getOffset(ele) {
                 let obj = {
@@ -43,8 +97,20 @@ export default () => {
                     obj.top += ele.offsetTop + ele.offsetParent.clientTop;
                     obj.left += ele.offsetLeft + ele.offsetParent.clientLeft;
                     ele = ele.offsetParent;
-                };
+                }
+                ;
                 return obj;
+            },
+            verification(item, index) {
+                let _ref = item.ref;
+                let val = this.$refs[_ref].value;
+                if (index === 0 || index === 1) {
+                    let reg = tool.pattern[_ref];
+                    item.msgErr = reg.test(val);
+                } else if (index === 2) {
+                    let _val = this.$refs.password.value;
+                    item.msgErr = val === _val;
+                };
             }
         }
     };
