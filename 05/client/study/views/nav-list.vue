@@ -7,10 +7,10 @@
         </ul>
         <ul class="user fr">
             <li class="fl">
-                <router-link to="/user/login">登录</router-link>
+                <router-link to="/control/login">登录</router-link>
             </li>
             <li class="fl">
-                <router-link to="/user/res">注册</router-link>
+                <router-link to="/control/res">注册</router-link>
             </li>
         </ul>
     </nav>
@@ -23,6 +23,13 @@
             return {
                 list: [11, 22, 33, 44, 55, 66, 77, 88, 99]
             };
+        },
+        mounted() {
+            /* this.axios.get('/user/init').then(data => {
+                console.log(data);
+            }).catch(errors => {
+                console.log(errors);
+            }); */
         }
     };
 </script>

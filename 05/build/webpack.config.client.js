@@ -19,7 +19,7 @@ const devServer = {
         index: '/index.html'
     },
     proxy: {
-        '/r': {
+        '/user': {
             target: 'http://localhost:3000/',
             changeOrigin: true
         }

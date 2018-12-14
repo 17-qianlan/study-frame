@@ -1,10 +1,11 @@
 const { db } = require('../schema/config');
 const userSchema = require('../schema/user');
-const crypto = require('../until/encrypt');
+const crypto = require('../until/crypto');
 
-const User = db.mode('users', userSchema);
+const User = db.model('users', userSchema);
 
 exports.res = async ctx => {
+    console.log(ctx.request.body);
     let data = ctx.request.body.split('/');
     let username = data[1];
     let password = crypto(data[2]);
@@ -55,7 +56,7 @@ exports.login = async ctx => {
             ctx.body = '密码错误';
         } else if (data.length >= 1) {
             ctx.body = '登录成功';
-            ctx.cookies.set('username', username , {
+            ctx.cookies.set('username', username, {
                 domain: 'localhost',
                 path: '/',
                 maxAge: 36e5,
@@ -91,9 +92,23 @@ exports.keepLog = async(ctx, next) => {
     await next();
 };
 
-exports.logout = async ctx => {
-    let data = ctx.request.body.split('/');
-    let username = data[1];
-    let password = crypto(data[2]);
+exports.init = async ctx => {
+     if (!ctx.seesion.isNew) {
+        ctx.body.info = true;
+    } else {
+        ctx.body.info = false;
+    };
+};
 
+exports.logout = async ctx => {
+    ctx.session = null;
+    ctx.cookie.set('username', null, {
+        maxAge: 0
+    });
+    ctx.cookie.set('uid', null, {
+        maxAge: 0
+    });
+    ctx.body = {
+        info: true
+    };
 };

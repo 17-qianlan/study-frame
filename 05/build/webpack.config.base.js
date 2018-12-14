@@ -1,5 +1,4 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const createVueLoaderOptions = require('./vue-loader.config');
 
 const isDev = process.env.NODE_ENV === 'development';

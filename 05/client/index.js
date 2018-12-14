@@ -8,7 +8,7 @@ import './assets/js/jQuery.js';
 import NavList from './study/views/nav-list';
 import Alert from './study/components/alert';
 
-import createRouter from '../router/router';
+import createRouter from './router/router';
 
 Vue.use(VueRouter);
 Vue.component('navList', NavList);

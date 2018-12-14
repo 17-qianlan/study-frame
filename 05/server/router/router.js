@@ -8,8 +8,9 @@ router.get('/router', async ctx => {
     ctx.body = '99999';
 });
 
+router.get('/user/init', user.keepLog, user.init);
 router.post('/user/res', user.res);
-
 router.post('/user/login', user.login);
+router.post('/user/logout', user.keepLog, user.login);
 
 module.exports = router;

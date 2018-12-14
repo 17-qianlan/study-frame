@@ -59,10 +59,14 @@ export default (type = 'registered') => {
                         this.isShow = true;
                         break;
                     }
-                    this.verification(item);
+                    console.log(item);
                     val += item.value + '/';
                 }
-                console.log(val);
+                this.axios.post('/user/res', val).then(data => {
+                    console.log(data);
+                }).catch(errors => {
+                    console.log(errors);
+                });
             },
             handleShow(val) {
                 this.isShow = val;
@@ -97,19 +101,18 @@ export default (type = 'registered') => {
                     obj.top += ele.offsetTop + ele.offsetParent.clientTop;
                     obj.left += ele.offsetLeft + ele.offsetParent.clientLeft;
                     ele = ele.offsetParent;
-                }
-                ;
+                };
                 return obj;
             },
             verification(item, index) {
                 let _ref = item.ref;
-                let val = this.$refs[_ref].value;
+                let val = this.$refs[_ref][0].value;
                 if (index === 0 || index === 1) {
                     let reg = tool.pattern[_ref];
-                    item.msgErr = reg.test(val);
+                    item.msgErr = !reg.test(val);
                 } else if (index === 2) {
-                    let _val = this.$refs.password.value;
-                    item.msgErr = val === _val;
+                    let _val = this.$refs.password[0].value;
+                    item.msgErr = val !== _val;
                 };
             }
         }
