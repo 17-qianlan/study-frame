@@ -5,10 +5,9 @@ const crypto = require('../until/crypto');
 const User = db.model('users', userSchema);
 
 exports.res = async ctx => {
-    console.log(ctx.request.body);
-    let data = ctx.request.body.split('/');
-    let username = data[1];
-    let password = crypto(data[2]);
+    let data = ctx.request.body;
+    let username = data.username;
+    let password = crypto(data.password);
     await new Promise((resolve, reject) => {
         User.find({ username }, (errors, data) => {
             if (errors) return reject(errors);
@@ -26,22 +25,28 @@ exports.res = async ctx => {
             });
         });
     }).then(async data => {
-        if (data) {
-            ctx.body = '注册成功';
-        } else {
-            ctx.body = '用户名已存在';
+        if (data) { // 注册成功
+            ctx.body = {
+                resSuccess: true
+            };
+        } else { // 用户名已存在
+            ctx.body = JSON.stringify({
+                userExisted: true
+            });
         }
     }).catch(errors => {
         if (errors) {
-            console.log(errors);
+            ctx.body = { // 注册失败
+                resFailed: false
+            };
         }
     });
 };
 
 exports.login = async ctx => {
-    let data = ctx.request.body.split('/');
-    let username = data[1];
-    let password = crypto(data[2]);
+    let data = ctx.request.body;
+    let username = data.username;
+    let password = crypto(data.password);
     await new Promise((resolve, reject) => {
         User.find({ username }, (errors, data) => {
             if (errors) return reject(errors);
@@ -51,11 +56,17 @@ exports.login = async ctx => {
         });
     }).then(data => {
         if (data === '1') {
-            ctx.body = '用户名不存在';
-        } else if (data === '3') {
-            ctx.body = '密码错误';
-        } else if (data.length >= 1) {
-            ctx.body = '登录成功';
+            ctx.body = { // 用户名不存在
+                userExisted: false
+            };
+        } else if (data === '3') { // 密码错误
+            ctx.body = {
+                wrongPassword: true
+            };
+        } else if (data.length >= 1) { // 登录成功
+            ctx.body = {
+                loginSuccess: true
+            };
             ctx.cookies.set('username', username, {
                 domain: 'localhost',
                 path: '/',

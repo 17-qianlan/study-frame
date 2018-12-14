@@ -43,7 +43,11 @@ export default (type = 'registered') => {
         mounted() {
             this.aInp = this.$refs;
             this.mag = this.getOffset(this.$refs.users);
-            if (type === 'login') this.userData = this.userData.splice(0, 2);
+            delete this.aInp.users;
+            if (type === 'login') {
+                this.userData = this.userData.splice(0, 2);
+                delete this.aInp.confirmPassword;
+            }
         },
         methods: {
             cleanVal() {
@@ -59,10 +63,14 @@ export default (type = 'registered') => {
                         this.isShow = true;
                         break;
                     }
-                    console.log(item);
-                    val += item.value + '/';
+                    val += item[0].value + '/';
                 }
-                this.axios.post('/user/res', val).then(data => {
+                let _val = val.split('/');
+                console.log('/user/' + (type === 'login' ? 'login' : 'res'));
+                this.axios.post('/user/' + (type === 'login' ? 'login' : 'res'), {
+                    username: _val[0],
+                    password: _val[1]
+                }).then(data => {
                     console.log(data);
                 }).catch(errors => {
                     console.log(errors);
