@@ -7,10 +7,11 @@
         </ul>
         <ul class="user fr">
             <li class="fl">
-                <router-link to="/control/login">登录</router-link>
+                <router-link to="/control/login" class="a-link" v-if="showLoginState">登录</router-link>
+                <login-state v-else></login-state>
             </li>
             <li class="fl">
-                <router-link to="/control/res">注册</router-link>
+                <router-link to="/control/res" class="a-link">注册</router-link>
             </li>
         </ul>
     </nav>
@@ -21,7 +22,8 @@
         name: 'nav-list',
         data() {
             return {
-                list: [11, 22, 33, 44, 55, 66, 77, 88, 99]
+                list: [11, 22, 33, 44, 55, 66, 77, 88, 99],
+                showLoginState: false
             };
         },
         mounted() {
@@ -67,7 +69,7 @@
                 background: greenyellow;
                 text-align: center;
                 line-height: $l-height;
-                a{
+                .a-link{
                     color: black;
                 }
             }

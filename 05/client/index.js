@@ -7,12 +7,14 @@ import App from './app.vue';
 import './assets/js/jQuery.js';
 import NavList from './study/views/nav-list';
 import Alert from './study/components/alert';
+import LoginState from './study/components/login-state';
 
 import createRouter from './router/router';
 
 Vue.use(VueRouter);
 Vue.component('navList', NavList);
 Vue.component('alert', Alert);
+Vue.component('loginState', LoginState);
 Vue.prototype.axios = Axios;
 const router = createRouter();
 /* eslint-disable no-new */

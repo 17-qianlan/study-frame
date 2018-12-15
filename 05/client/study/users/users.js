@@ -66,7 +66,6 @@ export default (type = 'registered') => {
                     val += item[0].value + '/';
                 }
                 let _val = val.split('/');
-                console.log('/user/' + (type === 'login' ? 'login' : 'res'));
                 this.axios.post('/user/' + (type === 'login' ? 'login' : 'res'), {
                     username: _val[0],
                     password: _val[1]

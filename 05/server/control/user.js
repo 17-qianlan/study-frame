@@ -51,7 +51,7 @@ exports.login = async ctx => {
         User.find({ username }, (errors, data) => {
             if (errors) return reject(errors);
             if (data.length === 0) return resolve('1');
-            if (data.password === password) return resolve(data);
+            if (data[0].password === password) return resolve(data);
             resolve('3');
         });
     }).then(data => {
