@@ -57,7 +57,7 @@ exports.login = async ctx => {
     }).then(data => {
         if (data === '1') {
             ctx.body = { // 用户名不存在
-                userExisted: false
+                userExisted: true
             };
         } else if (data === '3') { // 密码错误
             ctx.body = {

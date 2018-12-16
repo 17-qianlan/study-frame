@@ -7,7 +7,7 @@
         </ul>
         <ul class="user fr">
             <li class="fl">
-                <router-link to="/control/login" class="a-link" @changed="handleState" v-if="showLoginState">登录</router-link>
+                <router-link to="/control/login" class="a-link" @changeShowState="handleState" v-if="showLoginState">登录</router-link>
                 <login-state :isShowLoginState="showLoginState" v-else></login-state>
             </li>
             <li class="fl">
@@ -33,6 +33,7 @@
             }).catch(errors => {
                 console.log(errors);
             });
+            console.log(111);
         },
         methods: {
             handleState(val) {

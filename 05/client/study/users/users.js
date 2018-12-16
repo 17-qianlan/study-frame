@@ -74,9 +74,13 @@ export default (type = 'registered') => {
                     password: _val[1]
                 }).then(({ data }) => {
                     if (data.loginSuccess || data.resSuccess) {
-                        this.redirect('/');
-                    } else if (!data.userExisted) {
-
+                        this.$router.push({
+                            path: '/'
+                        });
+                    } else if (data.userExisted) {
+                        this.msg = '用户名不存在';
+                    } else if (data.wrongPassword) {
+                        this.msg = '密码错误';
                     }
                 }).catch(errors => {
                     console.log(errors);

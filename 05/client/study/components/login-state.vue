@@ -1,6 +1,6 @@
 <template>
     <div class="login-state">
-        <img src="../../assets/avatar/2.jpeg" alt="">
+        <img src="../../assets/avatar/2.jpg" alt="">
         <ul>
             <li>用户管理</li>
             <li>用户信息</li>
@@ -30,9 +30,8 @@
         methods: {
             logout() {
                 this.axios.post('/user/logout').then(({ data }) => {
-                    console.log(666);
                     if (data.loginExisted) {
-                        this.$emit('changed', true);
+                        this.$emit('changeShowState', true);
                     }
                 }).catch(errors => {
                     console.log(errors);
