@@ -1,4 +1,5 @@
 import tool from '../../assets/js/tool.js';
+
 export default (type = 'registered') => {
     return {
         name: type,
@@ -32,12 +33,14 @@ export default (type = 'registered') => {
                         span: '确认密码',
                         msgErr: false
                     }
-                ]
+                ],
                 /*
                 userErrMsg: false,
                 passwordErrMsg: false,
                 confirmErrMsg: false
                 */
+                msg: '',
+                errMsg: ''
             };
         },
         mounted() {
@@ -69,8 +72,12 @@ export default (type = 'registered') => {
                 this.axios.post('/user/' + (type === 'login' ? 'login' : 'res'), {
                     username: _val[0],
                     password: _val[1]
-                }).then(data => {
-                    console.log(data);
+                }).then(({ data }) => {
+                    if (data.loginSuccess || data.resSuccess) {
+                        this.redirect('/');
+                    } else if (!data.userExisted) {
+
+                    }
                 }).catch(errors => {
                     console.log(errors);
                 });
@@ -108,7 +115,8 @@ export default (type = 'registered') => {
                     obj.top += ele.offsetTop + ele.offsetParent.clientTop;
                     obj.left += ele.offsetLeft + ele.offsetParent.clientLeft;
                     ele = ele.offsetParent;
-                };
+                }
+                ;
                 return obj;
             },
             verification(item, index) {
@@ -120,7 +128,8 @@ export default (type = 'registered') => {
                 } else if (index === 2) {
                     let _val = this.$refs.password[0].value;
                     item.msgErr = val !== _val;
-                };
+                }
+                ;
             }
         }
     };

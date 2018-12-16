@@ -12,7 +12,8 @@
         data() {
             return {
                 styles: '',
-                boo: false
+                boo: false,
+                isShowJump: false
             };
         },
         mounted() {
@@ -20,6 +21,11 @@
                 width: '100%',
                 height: '100%'
             };
+        },
+        methods: {
+            handleId(val) {
+                this.dd = val;
+            }
         }
     };
 </script>

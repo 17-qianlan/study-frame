@@ -7,8 +7,8 @@
         </ul>
         <ul class="user fr">
             <li class="fl">
-                <router-link to="/control/login" class="a-link" v-if="showLoginState">登录</router-link>
-                <login-state v-else></login-state>
+                <router-link to="/control/login" class="a-link" @changed="handleState" v-if="showLoginState">登录</router-link>
+                <login-state :isShowLoginState="showLoginState" v-else></login-state>
             </li>
             <li class="fl">
                 <router-link to="/control/res" class="a-link">注册</router-link>
@@ -23,15 +23,21 @@
         data() {
             return {
                 list: [11, 22, 33, 44, 55, 66, 77, 88, 99],
-                showLoginState: false
+                showLoginState: false,
+                dd: ''
             };
         },
         mounted() {
-            /* this.axios.get('/user/init').then(data => {
-                console.log(data);
+            this.axios.get('/user/init').then(({ data }) => {
+                this.showLoginState = !data.loginExisted;
             }).catch(errors => {
                 console.log(errors);
-            }); */
+            });
+        },
+        methods: {
+            handleState(val) {
+                this.isShowLoginState = val;
+            }
         }
     };
 </script>

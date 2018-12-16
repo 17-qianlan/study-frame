@@ -2,22 +2,43 @@
     <div class="login-state">
         <img src="../../assets/avatar/2.jpeg" alt="">
         <ul>
-            <li>
-                <router-link to="/">用户管理</router-link>
-            </li>
-            <li>
-                <router-link to="/">用户信息</router-link>
-            </li>
-            <li>
-                <router-link to="/">退出登录</router-link>
-            </li>
+            <li>用户管理</li>
+            <li>用户信息</li>
+            <li @click="logout">退出登录</li>
         </ul>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'login-state'
+        name: 'login-state',
+        props: {
+            isShowLoginState: {
+                type: Boolean,
+                default: false
+            }
+        },
+        data() {
+            return {
+                a: {}
+            };
+        },
+        mounted() {
+            this.a = this.$refs;
+            console.log(this.a.logout);
+        },
+        methods: {
+            logout() {
+                this.axios.post('/user/logout').then(({ data }) => {
+                    console.log(666);
+                    if (data.loginExisted) {
+                        this.$emit('changed', true);
+                    }
+                }).catch(errors => {
+                    console.log(errors);
+                });
+            }
+        }
     };
 </script>
 
@@ -32,6 +53,7 @@
             border-radius: 50%;
         }
         ul{
+            display: none;
             position: absolute;
             top: 30px;
             left: 0;
@@ -44,16 +66,17 @@
                 height: 30px;
                 border-bottom: 1px solid #e3726d;
                 background: greenyellow;
-                a{
-                    color: black;
-                    font-size: 12px;
-                    text-align: center;
-                    line-height: 30px;
-                };
+                color: black;
+                font-size: 12px;
+                text-align: center;
+                line-height: 30px;
             }
-            li:hover a{
+            li:hover{
                 color: red;
             }
         }
+    }
+    .login-state:hover ul{
+        display: block;
     }
 </style>

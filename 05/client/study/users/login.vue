@@ -10,14 +10,15 @@
                 <span>密码:</span>
                 <input type="text"  ref="pass">
             </li>-->
-            <li v-for="(item,index) of userData" :key="index">
+            <li v-for="(item,index) of userData" :key="index" class="input">
                 <input :type="item.type" :ref="item.ref" @focus="focusUser(item,index)" @blur="verification(item,index)" :placeholder="item.placeholder">
                 <p v-if="item.msgErr">{{item.msg}}</p>
             </li>
-            <li>
+            <li class="btn">
                 <input type="button" value="登录" @click="send">
                 <input type="button" value="重置" @click="cleanVal">
             </li>
+            <li v-if="errMsg" class="msg">密码错误</li>
         </ul>
         <alert :mag="mag" :isShow="isShow" @boo="handleShow" v-show="isShow"></alert>
     </div>
@@ -46,7 +47,7 @@
             height: 70%;
             margin: 20px auto 0;
             font-size: 20px;
-            li:not(:last-of-type) {
+            li.input {
                 width: 100%;
                 min-height: 40px;
                 margin: 15px 0 0 5px;
@@ -79,7 +80,7 @@
                     text-align: left;
                 }
             }
-            li:nth-child(3){
+            li.btn{
                 width: 70%;
                 height: 40px;
                 margin: 50px auto 0;
@@ -89,6 +90,12 @@
                     margin-left: 20px;
                     cursor: pointer;
                 }
+            }
+            li.msg {
+                width: 100%;
+                height: 30px;
+                text-align: left;
+                line-height: 30px;
             }
             input{
                 border: 1px;

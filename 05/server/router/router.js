@@ -11,6 +11,6 @@ router.get('/router', async ctx => {
 router.get('/user/init', user.keepLog, user.init);
 router.post('/user/res', user.res);
 router.post('/user/login', user.login);
-router.post('/user/logout', user.keepLog, user.login);
+router.post('/user/logout', user.keepLog, user.logout);
 
 module.exports = router;

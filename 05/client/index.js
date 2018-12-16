@@ -15,6 +15,7 @@ Vue.use(VueRouter);
 Vue.component('navList', NavList);
 Vue.component('alert', Alert);
 Vue.component('loginState', LoginState);
+
 Vue.prototype.axios = Axios;
 const router = createRouter();
 /* eslint-disable no-new */

@@ -91,11 +91,12 @@ exports.login = async ctx => {
     });
 };
 
+// 更新一下cookie数据
 exports.keepLog = async(ctx, next) => {
     if (ctx.session.isNew) {
         if (ctx.cookies.get('username')) {
             ctx.seesion = {
-                username: ctx.seesion.get('username'),
+                username: ctx.session.get('username'),
                 uid: ctx.session.get('uid')
             };
         }
@@ -104,22 +105,26 @@ exports.keepLog = async(ctx, next) => {
 };
 
 exports.init = async ctx => {
-     if (!ctx.seesion.isNew) {
-        ctx.body.info = true;
+     if (!ctx.session.isNew) {
+         ctx.body = {
+            loginExisted: true
+        };
     } else {
-        ctx.body.info = false;
+        ctx.body = {
+            loginExisted: false
+        };
     };
 };
 
 exports.logout = async ctx => {
     ctx.session = null;
-    ctx.cookie.set('username', null, {
+    ctx.cookies.set('username', null, {
         maxAge: 0
     });
-    ctx.cookie.set('uid', null, {
+    ctx.cookies.set('uid', null, {
         maxAge: 0
     });
     ctx.body = {
-        info: true
+        loginExisted: true
     };
 };
