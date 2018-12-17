@@ -25,7 +25,7 @@
         },
         mounted() {
             this.a = this.$refs;
-            console.log(this.a.logout);
+            // console.log(this.a.logout);
         },
         methods: {
             logout() {

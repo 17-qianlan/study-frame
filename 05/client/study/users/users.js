@@ -62,24 +62,29 @@ export default (type = 'registered') => {
             send() {
                 let val = '';
                 for (const item of Object.values(this.aInp)) {
-                    if (item.value === '') {
+                    if (item[0].value === '') {
                         this.isShow = true;
                         break;
                     }
                     val += item[0].value + '/';
                 }
                 let _val = val.split('/');
+                if (!_val[0]) return;
                 this.axios.post('/user/' + (type === 'login' ? 'login' : 'res'), {
                     username: _val[0],
                     password: _val[1]
                 }).then(({ data }) => {
-                    if (data.loginSuccess || data.resSuccess) {
-                        this.$router.push({
+                    if (data.loginSuccess) {
+                        this.$router.push({ // 返回首页
                             path: '/'
                         });
-                    } else if (data.userExisted) {
+                    } else if (data.resSuccess) { // 返回到登录页面
+                        this.$router.push({
+                            path: '/user/login'
+                        });
+                    } else if (data.userExisted) { // 提示用户名不存在
                         this.msg = '用户名不存在';
-                    } else if (data.wrongPassword) {
+                    } else if (data.wrongPassword) { // 提示密码错误
                         this.msg = '密码错误';
                     }
                 }).catch(errors => {
@@ -88,7 +93,6 @@ export default (type = 'registered') => {
             },
             handleShow(val) {
                 this.isShow = val;
-                this.aInp.user.focus();
             },
             /*
             userInput(e) {

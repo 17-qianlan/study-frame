@@ -25,7 +25,6 @@
         data() {
             return {
                 styles: {},
-                boo: this.isShow,
                 sectionCss: {}
             };
         },

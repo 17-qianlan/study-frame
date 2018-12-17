@@ -7,8 +7,9 @@
         </ul>
         <ul class="user fr">
             <li class="fl">
-                <router-link to="/control/login" class="a-link" @changeShowState="handleState" v-if="showLoginState">登录</router-link>
-                <login-state :isShowLoginState="showLoginState" v-else></login-state>
+                <router-link to="/control/login" class="a-link">登录</router-link>
+                <!--<login-state v-else></login-state>-->
+                {{showLoginState}}
             </li>
             <li class="fl">
                 <router-link to="/control/res" class="a-link">注册</router-link>
@@ -22,9 +23,7 @@
         name: 'nav-list',
         data() {
             return {
-                list: [11, 22, 33, 44, 55, 66, 77, 88, 99],
-                showLoginState: false,
-                dd: ''
+                list: [11, 22, 33, 44, 55, 66, 77, 88, 99]
             };
         },
         mounted() {
@@ -33,11 +32,10 @@
             }).catch(errors => {
                 console.log(errors);
             });
-            console.log(111);
         },
-        methods: {
-            handleState(val) {
-                this.isShowLoginState = val;
+        computed: {
+            showLoginState() {
+                return this.$store.state.isShowLoginState;
             }
         }
     };
