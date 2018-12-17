@@ -31,7 +31,7 @@
             logout() {
                 this.axios.post('/user/logout').then(({ data }) => {
                     if (data.loginExisted) {
-                        this.$emit('changeShowState', true);
+                        this.$store.commit('updateShowLoginState');
                     }
                 }).catch(errors => {
                     console.log(errors);

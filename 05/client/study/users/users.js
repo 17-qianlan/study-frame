@@ -78,6 +78,7 @@ export default (type = 'registered') => {
                         this.$router.push({ // 返回首页
                             path: '/'
                         });
+                        this.$store.commit('updateShowLoginState', false);
                     } else if (data.resSuccess) { // 返回到登录页面
                         this.$router.push({
                             path: '/user/login'

@@ -7,9 +7,8 @@
         </ul>
         <ul class="user fr">
             <li class="fl">
-                <router-link to="/control/login" class="a-link">登录</router-link>
-                <!--<login-state v-else></login-state>-->
-                {{showLoginState}}
+                <router-link to="/control/login" class="a-link" v-if="showLoginState">登录</router-link>
+                <login-state v-else></login-state>
             </li>
             <li class="fl">
                 <router-link to="/control/res" class="a-link">注册</router-link>
@@ -28,7 +27,11 @@
         },
         mounted() {
             this.axios.get('/user/init').then(({ data }) => {
-                this.showLoginState = !data.loginExisted;
+                if (data.loginExisted) {
+                    this.$store.commit('updateShowLoginState', false);
+                } else {
+                    this.$store.commit('updateShowLoginState');
+                }
             }).catch(errors => {
                 console.log(errors);
             });
