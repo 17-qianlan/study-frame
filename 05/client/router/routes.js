@@ -6,7 +6,7 @@ import store from '../store/store';
 
 // import tool from '../assets/js/tool';
 
-console.log(store.state);
+console.log(store().state);
 
 export default [
     {

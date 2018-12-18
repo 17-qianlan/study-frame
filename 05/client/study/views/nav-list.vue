@@ -26,7 +26,7 @@
             };
         },
         mounted() {
-            this.axios.get('/user/init').then(({ data }) => {
+            /* this.axios.get('/user/init').then(({ data }) => {
                 if (data.loginExisted) {
                     this.$store.commit('updateShowLoginState', false);
                 } else {
@@ -34,7 +34,7 @@
                 }
             }).catch(errors => {
                 console.log(errors);
-            });
+            }); */
         },
         computed: {
             showLoginState() {
