@@ -20,8 +20,10 @@ Vue.prototype.axios = Axios;
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
+
 const router = createRouter();
 const store = createStore();
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

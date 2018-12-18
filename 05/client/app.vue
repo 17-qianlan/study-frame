@@ -1,7 +1,5 @@
 <template>
     <div id="app" :style="styles" >
-        <nav-list></nav-list>
-        <!--<alert v-show="boo"></alert>-->
         <router-view />
     </div>
 </template>

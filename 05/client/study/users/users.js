@@ -79,6 +79,7 @@ export default (type = 'registered') => {
                             path: '/'
                         });
                         this.$store.commit('updateShowLoginState', false);
+                        tool.setItem('username', _val[0]);
                     } else if (data.resSuccess) { // 返回到登录页面
                         this.$router.push({
                             path: '/user/login'

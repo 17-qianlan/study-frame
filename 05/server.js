@@ -15,7 +15,7 @@ const CONFIG = {
     overWrite: true,
     httpOnly: true,
     singed: true,
-    rolling: true
+    rolling: false
 };
 
 app.use(session(CONFIG, app));
