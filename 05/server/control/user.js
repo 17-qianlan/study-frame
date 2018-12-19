@@ -13,7 +13,7 @@ exports.res = async ctx => {
     await new Promise((resolve, reject) => {
         User.find({ username }, (errors, data) => {
             if (errors) return reject(errors);
-            if (data.length !== 0) return resolve();
+            if (data.length !== 0) return resolve(data);
             const _user = new User({
                 username,
                 password,

@@ -4,7 +4,7 @@ export default {
     UserLogin({ commit }, data) {
         commit(types.LOGIN, data);
     },
-    UserLogout({ commit }) {
-        commit(types.LOGOUT);
+    UserLogout({ commit }, data) {
+        commit(types.LOGOUT, data);
     }
 };

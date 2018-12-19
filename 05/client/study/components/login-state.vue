@@ -10,34 +10,20 @@
 </template>
 
 <script>
-    import tool from '../../assets/js/tool';
     export default {
         name: 'login-state',
-        props: {
-            isShowLoginState: {
-                type: Boolean,
-                default: false
-            }
-        },
-        data() {
-            return {
-                a: {}
-            };
-        },
-        mounted() {
-            this.a = this.$refs;
-            // console.log(this.a.logout);
-        },
         methods: {
             logout() {
-                this.axios.post('/user/logout').then(({ data }) => {
+                this.$store.commit('updateShowLoginState', true);
+                /* this.axios.post('/user/logout').then(({ data }) => {
                     if (data.loginExisted) {
                         this.$store.commit('updateShowLoginState');
                         tool.removerItem('username');
                     }
                 }).catch(errors => {
                     console.log(errors);
-                });
+                }); */
+                this.$store.dispatch('UserLogout');
             }
         }
     };

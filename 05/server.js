@@ -8,7 +8,7 @@ const app = new Koa();
 app.use(koaCross());
 app.use(koaBody());
 
-app.keys = ['lightBlue'];
+/* app.keys = ['lightBlue'];
 const CONFIG = {
     key: 'lightBlue',
     maxAge: 36e5,
@@ -16,9 +16,9 @@ const CONFIG = {
     httpOnly: true,
     singed: true,
     rolling: false
-};
+}; */
 
-app.use(session(CONFIG, app));
+// app.use(session(CONFIG, app));
 
 const router = require('./server/router/router.js');
 app.use(router.routes()).use(router.allowedMethods());

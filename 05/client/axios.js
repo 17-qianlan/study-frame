@@ -1,9 +1,8 @@
 import axios from 'axios';
 import store from './store/store';
-import router from './router/router';
+import createRouter from './router/router';
 
 const state = store().state;
-const createRouter = router();
 
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
@@ -11,9 +10,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 const instance = axios.create();
 instance.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 
-console.log(instance.interceptors.request.use, axios.interceptors.request.use);
+// 有没有暂时没发现区别
 axios.interceptors.request.use = instance.interceptors.request.use;
-console.log(instance.interceptors.request.use, axios.interceptors.request.use);
 
 // request拦截器
 instance.interceptors.request.use(
@@ -55,9 +53,6 @@ export default {
         return instance.post('/user/res', data);
     },
     userLogin(data) {
-        return instance.post('user/res', data);
-    },
-    userLogout(data) {
-        return instance.post('user/logout', data);
+        return instance.post('/user/login', data);
     }
 };

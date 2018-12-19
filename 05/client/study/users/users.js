@@ -1,4 +1,5 @@
 import tool from '../../assets/js/tool.js';
+import api from '../../axios';
 
 export default (type = 'registered') => {
     return {
@@ -70,7 +71,7 @@ export default (type = 'registered') => {
                 }
                 let _val = val.split('/');
                 if (!_val[0]) return;
-                this.axios.post('/user/' + (type === 'login' ? 'login' : 'res'), {
+                /* this.axios.post('/user/' + (type === 'login' ? 'login' : 'res'), {
                     username: _val[0],
                     password: _val[1]
                 }).then(({ data }) => {
@@ -91,7 +92,44 @@ export default (type = 'registered') => {
                     }
                 }).catch(errors => {
                     console.log(errors);
-                });
+                }); */
+                if (type === 'login') {
+                    api.userLogin({
+                        username: _val[0],
+                        password: _val[1]
+                    }).then(({ data }) => {
+                        if (data.loginSuccess) {
+                            this.$store.commit('updateShowLoginState', false);
+                            // tool.setItem('username', _val[0]);
+                            // let token = data.token;
+                            // let username = _val[0];
+                            data.username = _val[0];
+                            this.$store.dispatch('UserLogin', data);
+                            this.$router.push({ // 返回首页
+                                path: '/index'
+                            });
+                        } else if (data.userExisted) { // 提示用户名不存在
+                            this.msg = '用户名不存在';
+                        } else if (data.wrongPassword) { // 提示密码错误
+                            this.msg = '密码错误';
+                        };
+                    }).catch(errors => {
+                        console.log(errors);
+                    });
+                } else if (type === 'registered') {
+                    api.userRes({
+                        username: _val[0],
+                        password: _val[1]
+                    }).then(({ data }) => {
+                        if (data.resSuccess) { // 返回到登录页面
+                            this.$router.push({
+                                path: '/control/login'
+                            });
+                        }
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
             },
             handleShow(val) {
                 this.isShow = val;
