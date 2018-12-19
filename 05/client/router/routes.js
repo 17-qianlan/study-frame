@@ -4,9 +4,10 @@ import Index from '../study/views/nav-list';
 
 import store from '../store/store';
 
-// import tool from '../assets/js/tool';
+import tool from '../assets/js/tool';
 
-console.log(store().state);
+let state = store().state;
+console.log(state);
 
 export default [
     {
@@ -25,12 +26,15 @@ export default [
         path: '/index',
         component: Index,
         beforeEnter(to, from, next) {
-            // let state = tool.getItem('username', 1);
-            // console.log(to);
-            // console.log(from);
-            // console.log(this);
-            // store.commit('updateShowLoginState', !state);
-            next();
+            let isState = tool.getItem('username', 1);
+            if (isState) {
+                // state.commit('updateShowLoginState', false);
+                state.isShowLoginState = false;
+                next();
+            } else {
+                state.isShowLoginState = true;
+                next('/control/login');
+            }
         }
     }
 ];

@@ -10,6 +10,7 @@
 </template>
 
 <script>
+    import tool from '../../assets/js/tool';
     export default {
         name: 'login-state',
         props: {
@@ -32,6 +33,7 @@
                 this.axios.post('/user/logout').then(({ data }) => {
                     if (data.loginExisted) {
                         this.$store.commit('updateShowLoginState');
+                        tool.removerItem('username');
                     }
                 }).catch(errors => {
                     console.log(errors);

@@ -4,11 +4,11 @@
         <ul>
             <!--<li>
                 <span>账号:</span>
-                <input type="text"  ref="control">
+                <input types="text"  ref="control">
             </li>
             <li>
                 <span>密码:</span>
-                <input type="text"  ref="pass">
+                <input types="text"  ref="pass">
             </li>-->
             <li v-for="(item,index) of userData" :key="index" class="input">
                 <input :type="item.type" :ref="item.ref" @focus="focusUser(item,index)" @blur="verification(item,index)" :placeholder="item.placeholder">

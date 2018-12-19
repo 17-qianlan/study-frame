@@ -29,5 +29,8 @@ export default {
             val,
             time: currentTime
         }));
+    },
+    removerItem(key) {
+        window.localStorage.removeItem(key);
     }
 };

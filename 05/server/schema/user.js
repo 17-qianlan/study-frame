@@ -2,7 +2,8 @@ const { Schema } = require('./config');
 
 const userSchema = new Schema({
     username: String,
-    password: String
+    password: String,
+    token: String
 }, {
     versionKey: false
 });

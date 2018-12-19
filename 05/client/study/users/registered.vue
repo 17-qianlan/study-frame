@@ -8,17 +8,17 @@
             </li>
             <!--<li>
                 &lt;!&ndash;<span>账号:</span>&ndash;&gt;
-                <input type="control" ref="control" @focus="focusUser" @blur="userInput" placeholder="5-10位纯数字">
+                <input types="control" ref="control" @focus="focusUser" @blur="userInput" placeholder="5-10位纯数字">
                 <p v-if="userErrMsg">账号格式错误;示例: 1122</p>
             </li>
             <li>
                 &lt;!&ndash;<span>密码:</span>&ndash;&gt;
-                <input type="password" ref="password" @blur="passwordInput" placeholder="6-16位">
+                <input types="password" ref="password" @blur="passwordInput" placeholder="6-16位">
                 <p v-if="passwordErrMsg">密码格式错误;示例: zf112093</p>
             </li>
             <li>
                 &lt;!&ndash;<span>确认密码:</span>&ndash;&gt;
-                <input type="password" ref="confirmPassword" @blur="confirmPasswordInput" placeholder="6-16位">
+                <input types="password" ref="confirmPassword" @blur="confirmPasswordInput" placeholder="6-16位">
                 <p v-if="confirmErrMsg">两次密码不一致</p>
             </li>-->
             <li>

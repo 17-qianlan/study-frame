@@ -1,6 +1,7 @@
 const { db } = require('../schema/config');
 const userSchema = require('../schema/user');
 const crypto = require('../until/crypto');
+const createToken = require('../token/create-token');
 
 const User = db.model('users', userSchema);
 
@@ -8,13 +9,15 @@ exports.res = async ctx => {
     let data = ctx.request.body;
     let username = data.username;
     let password = crypto(data.password);
+    let token = createToken(username);
     await new Promise((resolve, reject) => {
         User.find({ username }, (errors, data) => {
             if (errors) return reject(errors);
             if (data.length !== 0) return resolve();
             const _user = new User({
                 username,
-                password
+                password,
+                token
             });
             _user.save((errors, data) => {
                 if (errors) {
@@ -47,11 +50,18 @@ exports.login = async ctx => {
     let data = ctx.request.body;
     let username = data.username;
     let password = crypto(data.password);
+    let token = createToken(username);
     await new Promise((resolve, reject) => {
         User.find({ username }, (errors, data) => {
             if (errors) return reject(errors);
             if (data.length === 0) return resolve('1');
-            if (data[0].password === password) return resolve(data);
+            if (data[0].password === password) {
+                data[0].token = token;
+                data[0].save((errors, data) => {
+                    if (errors) reject(errors);
+                });
+                return resolve(data);
+            };
             resolve('3');
         });
     }).then(data => {
@@ -65,9 +75,10 @@ exports.login = async ctx => {
             };
         } else if (data.length >= 1) { // 登录成功
             ctx.body = {
-                loginSuccess: true
+                loginSuccess: true,
+                token: data[0].token
             };
-            ctx.cookies.set('username', username, {
+            /* ctx.cookies.set('username', username, {
                 domain: 'localhost',
                 path: '/',
                 maxAge: 36e5,
@@ -84,7 +95,7 @@ exports.login = async ctx => {
             ctx.session = {
                 username,
                 uid: data[0]._id
-            };
+            }; */
         }
     }).catch(errors => {
         console.log(errors);
