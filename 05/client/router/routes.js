@@ -2,11 +2,11 @@ import Login from '../study/users/login';
 import Res from '../study/users/registered';
 import Index from '../study/views/nav-list';
 
-import store from '../store/store';
+// import store from '../store/store';
 
-import tool from '../assets/js/tool';
+// import tool from '../assets/js/tool';
 
-let state = store().state;
+// let state = store().state;
 
 export default [
     {
@@ -23,7 +23,7 @@ export default [
     },
     {
         path: '/index',
-        component: Index,
+        component: Index/* ,
         beforeEnter(to, from, next) {
             let isState = tool.getItem('user', 1);
             console.log(isState);
@@ -35,6 +35,6 @@ export default [
                 state.isShowLoginState = true;
                 next('/control/login');
             }
-        }
+        } */
     }
 ];
