@@ -7,7 +7,6 @@ import store from '../store/store';
 import tool from '../assets/js/tool';
 
 let state = store().state;
-console.log(state);
 
 export default [
     {
@@ -26,7 +25,8 @@ export default [
         path: '/index',
         component: Index,
         beforeEnter(to, from, next) {
-            let isState = tool.getItem('username', 1);
+            let isState = tool.getItem('user', 1);
+            console.log(isState);
             if (isState) {
                 // state.commit('updateShowLoginState', false);
                 state.isShowLoginState = false;

@@ -14,11 +14,11 @@
                 <input :type="item.type" :ref="item.ref" @focus="focusUser(item,index)" @blur="verification(item,index)" :placeholder="item.placeholder">
                 <p v-if="item.msgErr">{{item.msg}}</p>
             </li>
+            <li v-if="errMsg" class="msg">{{msg}}</li>
             <li class="btn">
                 <input type="button" value="登录" @click="send">
                 <input type="button" value="重置" @click="cleanVal">
             </li>
-            <li v-if="errMsg" class="msg">密码错误</li>
         </ul>
         <alert :mag="mag" :isShow="isShow" @boo="handleShow" v-show="isShow"></alert>
     </div>
@@ -83,7 +83,7 @@
             li.btn{
                 width: 70%;
                 height: 40px;
-                margin: 50px auto 0;
+                margin: 30px auto 0;
                 input{
                     width: 40%;
                     height: 100%;
@@ -92,10 +92,12 @@
                 }
             }
             li.msg {
-                width: 100%;
-                height: 30px;
+                width: 90%;
+                height: 50px;
+                margin-left: 10px;
+                color: red;
                 text-align: left;
-                line-height: 30px;
+                line-height: 50px;
             }
             input{
                 border: 1px;

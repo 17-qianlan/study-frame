@@ -15,9 +15,10 @@ export default {
         if (nowTime - data.time >= expire) {
             window.localStorage.removeItem(key);
         } else {
-            val = data.val;
+            val = data.username;
             window.localStorage.setItem(key, JSON.stringify({
-                key: val,
+                token: data.token,
+                username: data.username,
                 time: nowTime
             }));
         }
@@ -26,7 +27,8 @@ export default {
     setItem(key, val) {
         let currentTime = new Date().getTime();
         window.localStorage.setItem(key, JSON.stringify({
-            val,
+            token: val.token,
+            username: val.username,
             time: currentTime
         }));
     },

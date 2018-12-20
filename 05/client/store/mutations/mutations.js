@@ -6,8 +6,7 @@ export default {
         state.isShowLoginState = boolean;
     },
     [types.LOGIN](state, data) {
-        tool.setItem('username', data.username);
-        tool.setItem('token', data.token);
+        tool.setItem('user', data);
     },
     [types.LOGOUT](state) {
         tool.removerItem('username');

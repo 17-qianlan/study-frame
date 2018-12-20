@@ -11,20 +11,22 @@ import api from '../../axios';
 }; */
 
 export default {
-    UserLogin({ commit }, data) {
+    UserLogin({ commit }, opts) {
         return new Promise((resolve, reject) => {
-            api.userLogin(data).then(({ data }) => {
+            api.userLogin(opts).then(({ data }) => {
                 if (data.loginSuccess) {
+                    data.username = opts.username;
                     commit(types.LOGIN, data);
-                    resolve(data.loginSuccess);
-                } else if (data.userExisted) { // 提示用户名不存在
-                    resolve(data.userExisted);
-                } else if (data.wrongPassword) { // 提示密码错误
-                    resolve(data.wrongPassword);
+                } else if (data.userExisted || data.wrongPassword) {
+                    commit(types.LOGOUT);
                 };
+                resolve(data);
             }).catch(errors => {
-                console.log(errors);
+                reject(errors);
             });
         });
+    },
+    UserLogout({ commit }, data) {
+        commit(types.LOGOUT, data);
     }
 };

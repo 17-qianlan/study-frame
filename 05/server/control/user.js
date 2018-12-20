@@ -48,6 +48,7 @@ exports.res = async ctx => {
 
 exports.login = async ctx => {
     let data = ctx.request.body;
+    console.log(data);
     let username = data.username;
     let password = crypto(data.password);
     let token = createToken(username);

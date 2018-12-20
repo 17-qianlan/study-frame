@@ -57,6 +57,7 @@
                 font-size: 12px;
                 text-align: center;
                 line-height: 30px;
+                cursor: pointer;
             }
             li:hover{
                 color: red;

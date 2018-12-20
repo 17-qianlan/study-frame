@@ -93,34 +93,33 @@ export default (type = 'registered') => {
                 }).catch(errors => {
                     console.log(errors);
                 }); */
+                let options = {
+                    username: _val[0],
+                    password: _val[1]
+                };
                 if (type === 'login') {
-                    api.userLogin({
-                        username: _val[0],
-                        password: _val[1]
-                    }).then(({ data }) => {
+                    // api.userLogin(options).then(({ data }) => {
+                    this.$store.dispatch('UserLogin', options).then((data) => {
                         if (data.loginSuccess) {
                             this.$store.commit('updateShowLoginState', false);
                             // tool.setItem('username', _val[0]);
                             // let token = data.token;
                             // let username = _val[0];
-                            data.username = _val[0];
-                            this.$store.dispatch('UserLogin', data);
                             this.$router.push({ // 返回首页
                                 path: '/index'
                             });
                         } else if (data.userExisted) { // 提示用户名不存在
                             this.msg = '用户名不存在';
+                            this.errMsg = true;
                         } else if (data.wrongPassword) { // 提示密码错误
                             this.msg = '密码错误';
+                            this.errMsg = true;
                         };
                     }).catch(errors => {
                         console.log(errors);
                     });
                 } else if (type === 'registered') {
-                    api.userRes({
-                        username: _val[0],
-                        password: _val[1]
-                    }).then(({ data }) => {
+                    api.userRes(options).then(({ data }) => {
                         if (data.resSuccess) { // 返回到登录页面
                             this.$router.push({
                                 path: '/control/login'
@@ -153,6 +152,7 @@ export default (type = 'registered') => {
             */
             focusUser(item, index) {
                 item.msgErr = false;
+                this.errMsg = false;
             },
             getOffset(ele) {
                 let obj = {
