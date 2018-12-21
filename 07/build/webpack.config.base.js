@@ -13,12 +13,18 @@ let config = {
     module: {
         rules: [
             {
-                test: /\.vue/,
+                test: /\.(vue|js|jsx)$/,
+                loader: 'eslint-loader',
+                exclude: /node_module/,
+                enforce: 'pre'
+            },
+            {
+                test: /\.vue$/,
                 loader: 'vue-loader',
                 options: createVueLoader(isDev)
             },
             {
-                test: /\.css/,
+                test: /\.css$/,
                 use: ['vue-style-loader', 'css-loader']
             },
             {
@@ -34,18 +40,18 @@ let config = {
                 ]
             },
             {
-                test: /\.scss$/,
-                use: ['vue-style-loader', 'css-loader', 'sass-loader']
-            },
-            {
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader',
                 exclude: /node_module/
+            },
+            {
+                test: /\.sass/,
+                loader: 'sass-loader'
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.json', 'vue']
+        extensions: ['.js', '.json', 'vue', '.css']
     }
 };
 

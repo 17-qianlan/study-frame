@@ -27,9 +27,6 @@ const defaultPlugins = [
         'process-env': {
             NODE_ENV: isDev ? "'development'" : "'production'"
         }
-    }),
-    new MiniCssExtractPlugin({
-        filename: '[name].[chunkhash:8].css'
     })
 ];
 
@@ -73,7 +70,9 @@ if (isDev) {
         },
         plugins: defaultPlugins.concat([
             new MiniCssExtractPlugin({
-                filename: '[name].[contenthash:8].css'
+                // filename: '[name].[contenthash:8].css'
+                filename: '[name].css',
+                chunkFilename: '[id].css'
             })
         ])
     });

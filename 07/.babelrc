@@ -2,7 +2,7 @@
   "presets": [
     ["env", {
       "modules": false,
-      "target": ["> 1%","last 10 version", "not id <= 8"]
+      "target": ["> 1%","latest 10 version", "not ie <= 8"]
     }],
     "stage-0"
   ],

@@ -13,7 +13,7 @@
     };
 </script>
 
-<style scoped>
+<style lang="css">
     #app{
         font-size: 25px;
         font-weight: bold;
