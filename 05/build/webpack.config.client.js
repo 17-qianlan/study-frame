@@ -16,7 +16,7 @@ const devServer = {
         errors: true
     },
     historyApiFallback: {
-        index: '/index.html'
+        index: '/template.html'
     },
     proxy: {
         '/user': {
