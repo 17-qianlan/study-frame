@@ -1,8 +1,6 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
         <router-view/>
-        {{msg}}
     </div>
 </template>
 
@@ -11,19 +9,16 @@
         name: 'App',
         data() {
             return {
-                msg: '55555'
+                msg: ''
             };
         }
     };
 </script>
 
-<style>
+<style scoped lang="scss">
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+        width: 100%;
+        height: 100%;
+        background: url('./assets/images/bg.jpeg') no-repeat center/cover;
     }
 </style>
