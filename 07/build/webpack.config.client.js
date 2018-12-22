@@ -15,6 +15,9 @@ const devServer = {
     hotOnly: true,
     overlay: {
         errors: true
+    },
+    historyApiFallback: {
+        index: '/template.html'
     }
 };
 

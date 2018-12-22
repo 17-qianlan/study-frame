@@ -1,5 +1,7 @@
 <template>
-    <div id="app">{{msg}}</div>
+    <div id="app">
+        <Header></Header>
+    </div>
 </template>
 
 <script>
@@ -13,9 +15,12 @@
     };
 </script>
 
-<style lang="css">
+<style scoped lang="scss">
     #app{
-        font-size: 25px;
-        font-weight: bold;
+        width: 100%;
+        height: 100%;
+        background: url('./assets/images/bg2.jpg') no-repeat center/cover;
+        margin: auto;
+        border: 1px solid transparent;
     }
 </style>

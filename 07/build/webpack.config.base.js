@@ -45,8 +45,8 @@ let config = {
                 exclude: /node_module/
             },
             {
-                test: /\.sass/,
-                loader: 'sass-loader'
+                test: /\.scss$/,
+                use: ['vue-style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
