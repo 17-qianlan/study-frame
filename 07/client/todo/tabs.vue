@@ -75,10 +75,14 @@
         .item{
             width: 100%;
             height: auto;
+            background: #fff;
+            border-radius: 5px;
             li{
                 width: 100%;
                 height: 40px;
-                background: #fff;
+                padding-bottom: 2px;
+                border-bottom: 1px solid black;
+                margin-top: 4px;
                 input{
                     display: inline-block;
                     width: 40px;

@@ -1,6 +1,6 @@
 <template>
     <div class="input">
-        <input type="text" placeholder="接下来干什么" ref="aInp" @blur="saveData" @keydown.13="saveData"/>
+        <input type="text" placeholder="接下来干什么" ref="aInp" @keydown.13="saveData"/>
     </div>
 </template>
 
@@ -16,12 +16,13 @@
                 let val = e.target.value;
                 if (val) {
                     let _val = {
-                        content: e.target.value,
+                        content: val,
                         completed: false,
                         show: false
                     };
                     this.$store.commit('pushData', _val);
                 }
+                e.target.value = '';
             }
         }
     };
