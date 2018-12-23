@@ -1,6 +1,10 @@
 <template>
     <div id="app">
         <Header></Header>
+        <div class="tab">
+            <todo-input></todo-input>
+            <Tabs></Tabs>
+        </div>
     </div>
 </template>
 
@@ -22,5 +26,11 @@
         background: url('./assets/images/bg2.jpg') no-repeat center/cover;
         margin: auto;
         border: 1px solid transparent;
+        box-sizing: border-box;
+        .tab{
+            width: 600px;
+            height: 200px;
+            margin: auto;
+        }
     }
 </style>

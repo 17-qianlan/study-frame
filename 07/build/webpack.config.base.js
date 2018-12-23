@@ -51,7 +51,7 @@ let config = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.json', 'vue', '.css']
+        extensions: ['.js', '.json', '.vue', '.css']
     }
 };
 
