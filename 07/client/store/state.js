@@ -1,3 +1,9 @@
 export default {
-    itemArr: []
+    itemArr: [
+        {
+            content: 7777777,
+            completed: false,
+            show: false
+        }
+    ]
 };
