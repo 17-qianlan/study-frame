@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浅蓝</title>
+</head>
+<body>
+<script>
+    let arr = [
+        {
+            type: '1111',
+            completed: true,
+        },
+        {
+            type: '6666',
+            completed: false,
+        },
+        {
+            type: '99999',
+            completed: false,
+        },
+        {
+            type: '22222',
+            completed: true,
+        },
+        {
+            type: '44444',
+            completed: false,
+        }
+    ];
+    arr.forEach ((item,index) => {
+        if(item.completed){
+            arr.splice(index, 1);
+        }
+    })
+    console.log(arr);
+</script>
+</body>
+</html>

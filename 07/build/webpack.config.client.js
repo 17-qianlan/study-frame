@@ -17,7 +17,7 @@ const devServer = {
         errors: true
     },
     historyApiFallback: {
-        index: '/template.html'
+        index: '/index.html'
     }
 };
 
@@ -27,7 +27,7 @@ const defaultPlugins = [
         template: path.join(__dirname, 'template.html')
     }),
     new webpack.DefinePlugin({
-        'process-env': {
+        'process.env': {
             NODE_ENV: isDev ? "'development'" : "'production'"
         }
     })

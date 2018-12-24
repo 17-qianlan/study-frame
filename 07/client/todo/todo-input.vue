@@ -7,15 +7,24 @@
 <script>
     export default {
         name: 'todo-input',
+        data() {
+            return {
+                num: 0
+            };
+        },
         mounted() {
             this.$refs.aInp.focus();
         },
         methods: {
+            /* 可以检测一下,查看是否有相同的, (使用forEach就可以进行比较了) 但是这个不是很有必要,因为用户自己想添加什么就添加什么,不需要做过多的限制 */
             saveData(e) {
+                this.num++;
                 e.target.blur();
                 let val = e.target.value;
                 if (val) {
                     let _val = {
+                        id: 'selected' + this.num,
+                        name: 'chosen' + this.num,
                         content: val,
                         completed: false,
                         show: false
