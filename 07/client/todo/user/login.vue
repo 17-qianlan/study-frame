@@ -3,7 +3,7 @@
         <ul class="input">
             <li v-for="(item, index) of userData" :key="index" >
                 <span>{{item.span}}</span>
-                <input :type="item.type" :placeholder="item.placeholder" :ref="item.ref" />
+                <input :type="item.type" @blur="inputBlur" :placeholder="item.placeholder" :ref="item.ref" />
                 <p v-if="item.show">{{item.msgErr}}</p>
                 <p v-if="item.loginMsgErr">{{item.loginMsg}}</p>
             </li>
@@ -16,75 +16,8 @@
 </template>
 
 <script>
-    import tool from '../../assets/js/tool';
-    export default {
-        name: 'login',
-        data() {
-            return {
-                userData: [
-                    {
-                        type: 'user',
-                        span: '账号:',
-                        placeholder: '请输入用户名',
-                        msgErr: '用户名类型错误,长度4-10,可以是数字和字母或混合',
-                        show: false,
-                        loginMsgErr: false,
-                        ref: 'user'
-                    },
-                    {
-                        type: 'password',
-                        span: '密码:',
-                        placeholder: '请输入密码',
-                        msgErr: '密码类型错误,长度6-16,可以是数字和字母或混合',
-                        loginMsg: '密码或者用户名错误',
-                        loginMsgErr: false,
-                        show: false,
-                        ref: 'password'
-                    }
-                ],
-                aInp: [],
-                inputRules: tool.pattern
-            };
-        },
-        mounted() {
-            for (const val of Object.values(this.$refs)) {
-                this.aInp.push(val);
-            }
-        },
-        methods: {
-            reset() {
-                let arr = this.aInp;
-                arr.forEach(item => {
-                    item[0].value = '';
-                });
-            },
-            send() {
-                let options = this.opt();
-                if (!options) return false;
-                if (!this.inputRules.user.test(options.username)) {
-                    this.userData[0].show = true;
-                    return false;
-                } else {
-                    this.userData[0].show = false;
-                }
-                if (!this.inputRules.password.test(options.password)) {
-                    this.userData[1].show = true;
-                    return false;
-                } else {
-                    this.userData[1].show = false;
-                }
-            },
-            opt() {
-                let arr = this.aInp;
-                let options = {
-                    username: arr[0][0].value,
-                    password: arr[0][0].value
-                };
-                console.log(options);
-                return options;
-            }
-        }
-    };
+    import users from './users';
+    export default users('login');
 </script>
 
 <style scoped lang="scss">
@@ -114,6 +47,10 @@
                     font-size: 19px;
                     line-height: 30px;
                     text-indent: 15px;
+                }
+                p{
+                    margin-left: 10px;
+                    color: red;
                 }
             }
         }

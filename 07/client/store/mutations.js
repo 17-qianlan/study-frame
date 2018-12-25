@@ -1,3 +1,5 @@
+import tool from '../assets/js/tool';
+
 export default {
     pushData(state, data) {
         state.itemArr.unshift(data);
@@ -11,5 +13,15 @@ export default {
         arr.forEach((item, index) => {
             if (item.completed) arr.splice(index, 1);
         });
+    },
+    userLogout(state) {
+        // Remove token and username
+        tool.removerItem('token');
+        tool.removerItem('username');
+    },
+    userLogin(state, opts) {
+        // Save token and username
+        state.token = opts.token;
+        state.username = opts.username;
     }
 };

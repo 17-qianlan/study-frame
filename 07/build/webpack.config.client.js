@@ -40,7 +40,8 @@ if (isDev) {
         devServer,
         plugins: defaultPlugins.concat([
             new webpack.HotModuleReplacementPlugin()
-        ])
+        ]),
+        devtool: '#cheap-module-eval-source-map'
     });
 } else {
     config = merge(baseConfig, {
