@@ -3,7 +3,7 @@ const userSchema = require('../schema/user');
 const crypto = require('../until/crypto');
 const createToken = require('../token/create-token');
 
-const User = db.mode('users', userSchema);
+const User = db.model('users', userSchema);
 
 exports.login = async ctx => {
     let data = ctx.request.body;
@@ -67,11 +67,13 @@ exports.res = async ctx => {
             });
         });
     }).then(data => {
+        console.log(data);
         if (!data) {
             ctx.body = {
                 resSuccess: true
             };
         } else {
+            // 已存在
             ctx.body = {
                 userExisted: true
             };

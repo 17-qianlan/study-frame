@@ -1,3 +1,4 @@
+/*
 import api from '../axios';
 
 export default {
@@ -25,3 +26,4 @@ export default {
         });
     }
 };
+*/

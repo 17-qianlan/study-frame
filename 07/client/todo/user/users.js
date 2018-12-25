@@ -1,4 +1,5 @@
 import tool from '../../assets/js/tool';
+import api from '../../axios';
 
 export default (type = 'registered') => {
     return {
@@ -57,7 +58,11 @@ export default (type = 'registered') => {
             send() {
                 let opt = this.inputBlur();
                 if (opt.isTrue) {
-                    console.log(opt.options);
+                    api.userRes(opt.options).then(({ data }) => {
+                        console.log(data);
+                    }).catch(errors => {
+                        console.log(errors);
+                    });
                 }
             },
             opt() {

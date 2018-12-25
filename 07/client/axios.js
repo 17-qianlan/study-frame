@@ -1,17 +1,17 @@
-import Axios from 'axios';
+import axios from 'axios';
 import createStore from './store/store';
 
 const state = createStore().state;
 
-Axios.defaults.timeout = 5000;
-Axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+axios.defaults.timeout = 5000;
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 
-const instance = Axios.create();
+const instance = axios.create();
 instance.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 
-Axios.interceptors.request.use = instance.interceptors.request.use;
+axios.interceptors.request.use = instance.interceptors.request.use;
 
-// request拦截器
+ // request拦截器
 instance.interceptors.request.use(
     config => {
         if (state.token) {
@@ -27,11 +27,6 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     response => {
         return response;
-    },
-    errors => {
-        if (errors.response.status) {
-
-        }
     }
 );
 
