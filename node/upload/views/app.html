@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>浅蓝</title>
+        <style type="text/css">
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6,figure{margin:0;}
+            ol,ul{margin:0;padding:0;list-style:none;}
+            a{text-decoration:none;}
+            img{border:none;}
+            input{outline: none;}
+            .fix:after{content: "";display: block;clear: both;}
+            .fr{float: right;}
+            .fl{float: left;}
+            i{font-style: normal;}
+            b{font-weight: normal;}
+            html,body{width: 100%;height: 100%;overflow: hidden;}
+            .sub{
+                width: 500px;
+                height: 500px;
+                margin: 100px auto;
+            }
+            .sub input{
+                width: 200px;
+                height: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="sub">
+            <input type="file" value="选择文件" />
+            <input type="button" value="点击上传">
+        </section>
+        <!--<script src="../node_modules/axios/dist/axios.min.js"></script>-->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            (() => {
+                axios.defaults.headers.post['Content-Type'] = 'Content-Type:multipart/form-data; boundary=44444 ';
+                let section = document.querySelector('section');
+                let aInp = section.querySelectorAll('input');
+                aInp[0].onchange = function() {
+                    let val = this.value;
+                    console.log(2);
+                    aInp[1].onclick = function() {
+                        console.log(1);
+                        axios.post('http://localhost:3000/send', val).then( data => {
+                            console.log(data);
+                        }).catch (err => {
+                            console.log(err);
+                        });
+                    };
+                };
+            })();
+        </script>
+    </body>
+</html>
