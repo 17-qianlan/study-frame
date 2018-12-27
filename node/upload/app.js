@@ -9,7 +9,7 @@ app.use(cors());
 app.use(koaBody({
     multipart: true,
     formidable: {
-        maxFileSize: 10 * Math.pow(1024, 2)
+        maxFileSize: 200*1024*1024    // 设置上传文件大小最大限制，默认2M
     }
 }));
 app.use(router.routes()).use(router.allowedMethods());

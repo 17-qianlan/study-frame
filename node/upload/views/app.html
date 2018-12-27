@@ -35,15 +35,19 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
             (() => {
-                axios.defaults.headers.post['Content-Type'] = 'Content-Type:multipart/form-data; boundary=44444 ';
                 let section = document.querySelector('section');
                 let aInp = section.querySelectorAll('input');
                 aInp[0].onchange = function() {
                     let val = this.value;
-                    console.log(2);
                     aInp[1].onclick = function() {
-                        console.log(1);
-                        axios.post('http://localhost:3000/send', val).then( data => {
+                        let headers = {
+                            headers: {
+                                "Content-Type": "multipart/form-data"
+                            }
+                        };
+                        let data = new FormData();
+                        data.append('file', val);
+                        axios.post('http://localhost:3000/send', data, headers).then( data => {
                             console.log(data);
                         }).catch (err => {
                             console.log(err);
