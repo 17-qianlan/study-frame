@@ -371,7 +371,7 @@
         silent: false,
 
         /**
-         * Show production mode tip message on boot?
+         * Show production mode tip.md message on boot?
          */
         productionTip: "development" !== 'production',
 
@@ -600,7 +600,7 @@
 
         tip = function (msg, vm) {
             if (hasConsole && (!config.silent)) {
-                console.warn("[Vue tip]: " + msg + (
+                console.warn("[Vue tip.md]: " + msg + (
                     vm ? generateComponentTrace(vm) : ''
                 ));
             }
@@ -10260,7 +10260,7 @@
                 "<" + (el.tag) + " v-for=\"" + alias + " in " + exp + "\">: component lists rendered with " +
                 "v-for should have explicit keys. " +
                 "See https://vuejs.org/guide/list.html#key for more info.",
-                true /* tip */
+                true /* tip.md */
             );
         }
 

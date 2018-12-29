@@ -31,27 +31,37 @@
             <input type="file" value="选择文件" />
             <input type="button" value="点击上传">
         </section>
+        <div></div>
         <!--<script src="../node_modules/axios/dist/axios.min.js"></script>-->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
             (() => {
                 let section = document.querySelector('section');
                 let aInp = section.querySelectorAll('input');
+                let div = document.getElementsByTagName("div")[0]
                 aInp[0].onchange = function() {
-                    let val = this.value;
+                    let val = this.files[0];
+                    console.log(val);
+                    // div.innerHTML = val;
                     aInp[1].onclick = function() {
                         let headers = {
                             headers: {
                                 "Content-Type": "multipart/form-data"
                             }
                         };
-                        let data = new FormData();
+                        let data = new FormData(val);
                         data.append('file', val);
-                        axios.post('http://localhost:3000/send', data, headers).then( data => {
+                        axios({
+                            method: 'post',
+                            url: 'http://localhost:3000/send',
+                            async: true,
+                            data
+                        }).then( data => {
                             console.log(data);
                         }).catch (err => {
                             console.log(err);
                         });
+
                     };
                 };
             })();
